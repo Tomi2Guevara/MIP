@@ -8,51 +8,92 @@ import time
 
 class SerialPort:
 
-    def __init__(self, port, baudrate):
-        try:
-            # Configura el puerto serie
-            self.ser = serial.Serial(port, baudrate)  # Cambia 'COM3' al puerto correcto
-            self.ser.flushInput() #borra el buffer de entrada
-            self.ser.flushOutput() #borra el buffer de salida
-        except Exception as e:
-            print("Error al abrir el puerto serie:", e)
-            exit() #sale del programa (opcional)
-        else:
-            print("Puerto serie abierto correctamente")
+    class SerialPort:
+       
+
+        def __init__(self, port: str, baudrate: int) -> None:
+            """
+            Initializes the SerialPort object and opens the serial connection.
+
+            Args:
+            port (str): The name of the serial port to connect to.
+            baudrate (int): The baud rate of the serial connection.
+            """
+            try:
+                # Configura el puerto serie
+                self.ser = serial.Serial(port, baudrate)  # Cambia 'COM3' al puerto correcto
+                self.ser.flushInput() #borra el buffer de entrada
+                self.ser.flushOutput() #borra el buffer de salida
+            except Exception as e:
+                print("Error al abrir el puerto serie:", e)
+                exit() #sale del programa (opcional)
+            else:
+                print("Puerto serie abierto correctamente")
     
     def initialize(self):
-        try:
-            gcode = 'G28'#para configurar el robot en su posicion inicial
-            self.ser.write(gcode.encode())
-        except Exception as e:
-            print("Error al inicializar el robot:", e)
-            exit() #sale del programa (opcional)
+            """
+            Initializes the robot by sending a G28 command to configure it in its initial position.
+
+            Raises:
+                Exception: An error occurred while initializing the robot.
+            """
+            try:
+                gcode = 'G28'
+                self.ser.write(gcode.encode())
+            except Exception as e:
+                print("Error al inicializar el robot:", e)
+                exit()
         
         
         
     def read(self):
-        try:
-            data=""
-            while True:
-                if self.ser.in_waiting > 0:
-                    data += self.ser.readline().decode('utf-8')
-                else:
-                    break
-            return data
-        except Exception as e:
-            print("Error al leer el puerto serie:", e)
+            """
+            Reads data from the serial port and returns it as a string.
+
+            Returns:
+            data (str): The data read from the serial port.
+            
+            Raises:
+            Exception: If there was an error while reading from the serial port.
+            """
+            try:
+                data=""
+                while True:
+                    if self.ser.in_waiting > 0:
+                        data += self.ser.readline().decode('utf-8')
+                    else:
+                        break
+                return data
+            except Exception as e:
+                print("Error al leer el puerto serie:", e)
+                raise e
             
 
     def write(self, mensaje):
-        try:
-            self.ser.write(str(mensaje + '\r\n').encode('utf-8'))
-            time.sleep(0.1)
-        except Exception as e:
-            print("Error al escribir en el puerto serie:", e)
+            """
+            Writes a message to the serial port.
+
+            Args:
+                mensaje (str): The message to be written to the serial port.
+
+            Returns:
+                None
+            """
+            try:
+                self.ser.write(str(mensaje + '\r\n').encode('utf-8'))
+                time.sleep(0.1)
+            except Exception as e:
+                print("Error al escribir en el puerto serie:", e)
         
     def close(self):
-        try:
-            self.ser.close()
-        except Exception as e:
-            print("Error al cerrar el puerto serie:", e)
+            """
+            Closes the serial port connection.
+
+            Raises:
+                Exception: If there is an error while closing the serial port.
+            """
+            try:
+                self.ser.close()
+            except Exception as e:
+                print("Error al cerrar el puerto serie:", e)
 

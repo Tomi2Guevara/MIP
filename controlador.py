@@ -14,6 +14,8 @@ class Controlador:
         self.posArticular = []
         self.posActuador = []
         self.SerialPort = None
+
+        """GET and SET methods"""
     def setDimensiones(self, anchura, altura, profundidad):
         self.dimensiones = [anchura, altura, profundidad]
     def setVelMax(self, velMax):
@@ -55,6 +57,11 @@ class Controlador:
     def getSerialPort(self):
         return self.SerialPort
     
+
+    """Methods for the control of the robot
+    use methods from serial_port.py
+    
+    """
 
     #los objetos de tipo serial port se manipulan desde controlador
     def inicializarPuerto(self):
