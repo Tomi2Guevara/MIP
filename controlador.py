@@ -6,7 +6,7 @@ class Controlador:
         self.velMax = None
         self.velAngularMax = None
         self.posMax = []
-        self.posAngularMax = [None]
+        self.posAngularMax = []
         self.encendido = False
         self.auto = None #true si es automatico, false si es manual
         self.posArticular = []
@@ -50,6 +50,9 @@ class Controlador:
         return self.posArticular
     def getPosActuador(self):
         return self.posActuador
+    def getSerialPort(self):
+        return self.SerialPort
+    
 
     
 
