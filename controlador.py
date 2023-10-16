@@ -1,27 +1,28 @@
 from serial_port import SerialPort
+import time
 
 class Controlador:
     def __init__(self):
         self.tipo = None # no se para que es esto
         self.efector_final = None # no se para que es esto
         self.dimensiones = None
-        self.velMax = None
-        self.velAngularMax = None
+        self.velMax = []
+        self.velAngularMax = []
         self.posMax = []
         self.posAngularMax = []
         self.encendido = False
         self.auto = None #true si es automatico, false si es manual
-        self.posArticular = []
-        self.posActuador = []
+        self.posArticular = [0.0,0.0,0.0]
+        self.posActuador = [0.0]
         self.SerialPort = None
 
         """GET and SET methods"""
     def setDimensiones(self, anchura, altura, profundidad):
         self.dimensiones = [anchura, altura, profundidad]
-    def setVelMax(self, velMax):
-        self.velMax = velMax
-    def setVelAngularMax(self, velAngularMax):
-        self.velAngularMax = velAngularMax
+    def setVelMax(self, min, max):
+        self.velMax = [min, max]
+    def setVelAngularMax(self, min, max):
+        self.velAngularMax = [min, max]
     def setPosMax(self, x, y, z):
         self.posMax = [x, y, z]
     def setPosAngularMax(self, wx, wy, wz):
@@ -56,6 +57,22 @@ class Controlador:
         return self.posActuador
     def getSerialPort(self):
         return self.SerialPort
+    
+    
+    def movimientoLineal(self,vel,posFinal):
+        try:            
+            posInicial = self.posActuador
+            t = abs((posFinal - posInicial) / vel)
+            time.sleep(t) #Espera en segundos
+            self.posActuador= posFinal
+            return ("Movimiento Exitoso")
+        except:
+            return ("Error en el movimiento")
+    
+
+
+    
+
     
 
    
