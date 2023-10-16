@@ -58,20 +58,8 @@ class Controlador:
         return self.SerialPort
     
 
-    """Methods for the control of the robot
-    use methods from serial_port.py
-    
-    """
+   
 
-    #los objetos de tipo serial port se manipulan desde controlador
-    def inicializarPuerto(self):
-        self.SerialPort.initialize()
-    def leerPuerto(self):
-        return self.SerialPort.read()
-    def escribirPuerto(self, mensaje):
-        self.SerialPort.write(mensaje)
-    def cerrarPuerto(self):
-        self.SerialPort.close()
     
 
 
