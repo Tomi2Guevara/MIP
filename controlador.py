@@ -1,3 +1,5 @@
+from serial_port import SerialPort
+
 class Controlador:
     def __init__(self):
         self.tipo = None # no se para que es esto
@@ -30,8 +32,8 @@ class Controlador:
         self.posArticular = [x, y, z, wx, wy, wz]
     def setPosActuador(self, x, y, z, wx, wy, wz ):
         self.posActuador = [x, y, z, wx, wy, wz]
-    def setSerialPort(self, SerialPort):
-        self.SerialPort = SerialPort
+    def setSerialPort(self, puerto, velocidad):
+        self.SerialPort = SerialPort(puerto, velocidad)
     def getDimensiones(self):
         return self.dimensiones
     def getVelMax(self):
@@ -52,6 +54,18 @@ class Controlador:
         return self.posActuador
     def getSerialPort(self):
         return self.SerialPort
+    
+
+    #los objetos de tipo serial port se manipulan desde controlador
+    def inicializarPuerto(self):
+        self.SerialPort.initialize()
+    def leerPuerto(self):
+        return self.SerialPort.read()
+    def escribirPuerto(self, mensaje):
+        self.SerialPort.write(mensaje)
+    def cerrarPuerto(self):
+        self.SerialPort.close()
+    
 
 
     
