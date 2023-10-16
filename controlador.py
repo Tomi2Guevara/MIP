@@ -52,7 +52,7 @@ class Controlador:
         return self.posActuador
     def getSerialPort(self):
         return self.SerialPort
-    
+
 
     
 
