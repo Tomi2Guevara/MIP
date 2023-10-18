@@ -4,8 +4,6 @@ import time
 
 class Controlador:
     def __init__(self):
-        self.tipo = None # no se para que es esto
-        self.efector_final = None # no se para que es esto
         self.dimensiones = None
         self.velMax = []
         self.velAngularMax = []
@@ -14,7 +12,7 @@ class Controlador:
         self.estConect = False
         self.auto = None #true si es automatico, false si es manual
         self.posArticular = [0.0,0.0,0.0]
-        self.posActuador = [0.0]
+        self.posActuador = [0.0, 0.0, 0.0]
         self.SerialPort = None
 
         """SET methods"""
@@ -43,27 +41,15 @@ class Controlador:
         else:
             self.estConect = False
             return ("Desconectado")    
-    
+    # no hay analisis cinemático
     def movimientoLineal(self,vel,posFinal):
         try:            
             posInicial = self.posActuador
-            t = abs((posFinal - posInicial) / vel)
-            time.sleep(t*1.1) #Espera en segundos
             self.posActuador= posFinal
             return ("Movimiento Exitoso")
         except:
             return ("Error en el movimiento")
         
-    def movimientoAngular(self,velAng,posFinal):
-        try:            
-            posInicial = self.posActuador
-            velTang = np.linalg.norm(self.posActuador)*velAng
-            t = abs((posFinal - posInicial) / (velTang))
-            time.sleep(t*1.1) #Espera en segundos
-            self.posActuador= posFinal
-            return ("Movimiento Exitoso")
-        except:
-            return ("Error en el movimiento")
 
     
 
