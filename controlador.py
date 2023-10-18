@@ -52,6 +52,12 @@ class Controlador:
             return ("Movimiento Exitoso")
         except:
             return ("Error en el movimiento")
+
+    def movimientoCircularCodo1(self):
+        pass
+
+    def movimientoCircularCodo2(self):
+        pass
     
 
 
