@@ -44,7 +44,6 @@ class Controlador:
     # no hay analisis cinemático
     def movimientoLineal(self,vel,posFinal):
         try:            
-            posInicial = self.posActuador
             self.posActuador= posFinal
             return ("Movimiento Exitoso")
         except:
