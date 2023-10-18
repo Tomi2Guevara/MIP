@@ -11,7 +11,7 @@ class SerialPort:
     class SerialPort:
        
 
-        def __init__(self, port: str, baudrate: int) -> None:
+        def __init__(self, port, baudrate):
             """
             Initializes the SerialPort object and opens the serial connection.
 
@@ -19,16 +19,18 @@ class SerialPort:
             port (str): The name of the serial port to connect to.
             baudrate (int): The baud rate of the serial connection.
             """
+            self.port = port
+            self.baudrate = baudrate
             try:
                 # Configura el puerto serie
                 self.ser = serial.Serial(port, baudrate)  # Cambia 'COM3' al puerto correcto
                 self.ser.flushInput() #borra el buffer de entrada
                 self.ser.flushOutput() #borra el buffer de salida
             except Exception as e:
-                print("Error al abrir el puerto serie:", e)
+                return"Error al abrir el puerto serie:" + str(e)
                 exit() #sale del programa (opcional)
             else:
-                print("Puerto serie abierto correctamente")
+                return"Puerto serie abierto correctamente"
     
     def initialize(self):
             """
@@ -41,8 +43,8 @@ class SerialPort:
                 gcode = 'G28'
                 self.ser.write(gcode.encode())
             except Exception as e:
-                print("Error al inicializar el robot:", e)
-                exit()
+                return "Error al inicializar el robot:" + str(e)
+                
         
         
         
@@ -65,8 +67,8 @@ class SerialPort:
                         break
                 return data
             except Exception as e:
-                print("Error al leer el puerto serie:", e)
-                raise e
+                return"Error al leer el puerto serie:" + str(e)
+                
             
 
     def write(self, mensaje):
@@ -83,7 +85,7 @@ class SerialPort:
                 self.ser.write(str(mensaje + '\r\n').encode('utf-8'))
                 time.sleep(0.1)
             except Exception as e:
-                print("Error al escribir en el puerto serie:", e)
+                return "Error al escribir en el puerto serie:" + str(e)
         
     def close(self):
             """
@@ -95,5 +97,5 @@ class SerialPort:
             try:
                 self.ser.close()
             except Exception as e:
-                print("Error al cerrar el puerto serie:", e)
+                return "Error al cerrar el puerto serie:" + str(e)
 
