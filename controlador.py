@@ -1,4 +1,5 @@
 from serial_port import SerialPort
+import nunpy as np  
 import time
 
 class Controlador:
@@ -47,13 +48,22 @@ class Controlador:
         try:            
             posInicial = self.posActuador
             t = abs((posFinal - posInicial) / vel)
-            time.sleep(t) #Espera en segundos
+            time.sleep(t*1.1) #Espera en segundos
             self.posActuador= posFinal
             return ("Movimiento Exitoso")
         except:
             return ("Error en el movimiento")
-    
-
+        
+    def movimientoAngular(self,velAng,posFinal):
+        try:            
+            posInicial = self.posActuador
+            velTang = np.linalg.norm(self.posActuador)*velAng
+            t = abs((posFinal - posInicial) / (velTang))
+            time.sleep(t*1.1) #Espera en segundos
+            self.posActuador= posFinal
+            return ("Movimiento Exitoso")
+        except:
+            return ("Error en el movimiento")
 
     
 
@@ -66,5 +76,10 @@ class Controlador:
 
 
 
+    
+
+
+
+    
 
     

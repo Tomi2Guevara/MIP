@@ -2,8 +2,8 @@
 try:
     import serial
 except ImportError:
-    print("El módulo serial no está instalado. Por favor, instale el módulo para continuar.")
-    exit()
+    raise "El módulo serial no está instalado. Por favor, instale el módulo para continuar."
+    
 import time
 
 class SerialPort:
@@ -98,4 +98,5 @@ class SerialPort:
                 self.ser.close()
             except Exception as e:
                 return "Error al cerrar el puerto serie:" + str(e)
+    
 
