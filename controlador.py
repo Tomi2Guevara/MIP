@@ -40,7 +40,8 @@ class Controlador:
             return ("Error al desconectar")
         else:
             self.estConect = False
-            return ("Desconectado")    
+            return ("Desconectado")   
+         
     # no hay analisis cinemático
     def movimientoLineal(self,vel,posFinal):
         try:            
