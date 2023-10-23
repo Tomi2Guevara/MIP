@@ -98,5 +98,5 @@ class SerialPort:
                 self.ser.close()
             except Exception as e:
                 return "Error al cerrar el puerto serie:" + str(e)
-    
+     
 
