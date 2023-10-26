@@ -1,7 +1,7 @@
 from serial_port import SerialPort
 import time
 import sys
-from excepciones import ErrorConexion, ModoInvalido, ErrorMotores, LimitVelLin
+from excepciones import ErrorConexion, ModoInvalido, ErrorMotores, LimitVelLin, ErrorWorkSpace
 
 class Controlador:
     def __init__(self):
@@ -11,13 +11,12 @@ class Controlador:
         self.estadoConexion = False
         self.estadoMotores = False
         self.estadoEfector = False
-        self.modoTrabajo = "Manual" #true si es automatico, false si es manual
-        #self.posArticular = [0.0,0.0,0.0]
+        self.modoTrabajo = "Manual" 
         self.posEfector = {"X":0.00,"Y":170.00,"Z":120.00}
         self.horaConexion = None
         self.fechaConexion = None
         self.grabarTrayectoria = False
-        record = ""
+        self.record = ""
 
 
     def getEstadoConexion(self):
@@ -38,10 +37,7 @@ class Controlador:
         return self.fechaConexion
     def getModo(self):
         return self.modoTrabajo
-    
-    
-    
-    
+   
 
 #defino valores por defecto para el puerto y el baudrate por si no se los paso
     def conectar(self, port="COM6", baudrate=115200):
@@ -54,7 +50,7 @@ class Controlador:
                 respuesta=self.serial.read(1)
                 respuesta+="INFO: conexion exitosa\n"
         except ErrorConexion as e:
-            return("ERROR: el robot ya esta conectado")
+            return "ERROR: el robot ya esta conectado"
         except:
             return ("ERROR: no se pudo conectar el robot")
         else:
@@ -115,7 +111,7 @@ class Controlador:
                 self.serial.write("M18")
                 respuesta=self.serial.read()
         except ErrorConexion as e:
-            return e
+            return str(e)
         except:
             return ("ERROR: no se pudo desactivar los motores")
         else:
@@ -137,13 +133,15 @@ class Controlador:
                 self.serial.write("G28")
                 self.posEfector = {"X":0.00,"Y":170.00,"Z":120.00}
                 respuesta=self.serial.read()
+                #Elimino los ulimos dos caracteres que son caracteres \n
+                respuesta = respuesta[:-2]
 
         except ErrorConexion as e:
-            return e
+            return str(e)
         except ModoInvalido as e:
-            return e
+            return str(e)
         except ErrorMotores as e:
-            return e
+            return str(e)
         else:
             return respuesta
         
@@ -156,20 +154,19 @@ class Controlador:
             else:
                 self.serial.write("M114")
                 respuesta=self.serial.read()
-                respuesta = respuesta.replace("�","C")
+                #despues de INFO:  hay dos espacios en blanco dejo uno solo
+                respuesta = respuesta.replace("INFO:  ","INFO: ")
         except ErrorConexion as e:
-            return e
+            return str(e)
         except:
             return ("ERROR: no se pudo obtener la posición actual")
         else:
-            #return respuesta
-            return self.posEfector
+            return respuesta
+            #return str(self.posEfector)
             
-        
 
-    # no hay analisis cinemático
     def movimientoLineal(self, posFinal, vel=20):
-        #verificaciones
+        #verifico que el robot este conectado, en modo manual, con los motores activados y que la velocidad este dentro del rango
         try:
             if self.estadoConexion == False:
                 raise ErrorConexion
@@ -181,20 +178,26 @@ class Controlador:
                 raise LimitVelLin
             else:
                 comando="G0X" + str(posFinal[0]) + "Y" + str(posFinal[1]) + "Z" + str(posFinal[2]) + "-F" + str(vel)
-                if self.grabarTrayectoria: self.record += comando
                 self.serial.write(comando)
-                self.posEfector = {"X":posFinal[0],"Y":posFinal[1],"Z":posFinal[2]}
                 respuesta=self.serial.read() 
-                self.posEfector = {"X":posFinal[0],"Y":posFinal[1],"Z":posFinal[2]}
+                #verifico si está dentro del espacio de trabajo
+                if "ERROR" in respuesta:
+                    raise ErrorWorkSpace
+                else:
+                    self.posEfector = {"X":posFinal[0],"Y":posFinal[1],"Z":posFinal[2]}
+                    if self.grabarTrayectoria: self.record += comando
+  
                 #respuesta = "INFO: movimiento lineal realizado con exito\nINFO: CURRENT POSITION: " + str(self.posEfector)
         except LimitVelLin as e:
-                    return e
+                    return str(e)
         except ErrorConexion as e:
-            return e
+            return str(e)
         except ModoInvalido as e:
-            return e
+            return str(e)
         except ErrorMotores as e:
-            return e
+            return str(e)
+        except ErrorWorkSpace as e:
+            return str(e)
         #except:
          #   return ("ERROR: no se pudo realizar el movimiento lineal")
         else:
@@ -227,9 +230,9 @@ class Controlador:
             return respuesta'''
         
     
-    
-        #para el efector hacemos algo similar a los motores
+    #para el efector hacemos algo similar a los motores
     def activarEfector(self):
+        #verifico que el robot este conectado, en modo manual y con los motores activados
         try:
             if self.estadoConexion == False:
                 raise ErrorConexion
@@ -243,11 +246,11 @@ class Controlador:
                 respuesta=self.serial.read()
                 self.estadoEfector = True
         except ErrorConexion as e:
-            return e
+            return str(e)
         except ModoInvalido as e:
-            return e
+            return str(e)
         except ErrorMotores as e:
-            return e
+            return str(e)
         except:
             return ("ERROR: no se pudo activar el efector")
         else:
@@ -267,11 +270,11 @@ class Controlador:
                 respuesta=self.serial.read()
                 self.estadoEfector = False
         except ErrorConexion as e:
-            return e
+            return str(e)
         except ModoInvalido as e:
-            return e
+            return str(e)
         except ErrorMotores as e:
-            return e
+            return str(e)
         except:
             return ("ERROR: no se pudo desactivar el efector")
         else:
@@ -282,10 +285,6 @@ class Controlador:
         try:
             if self.estadoConexion == False:
                 raise ErrorConexion
-            elif self.modoTrabajo == "Automatico":
-                raise ModoInvalido
-            elif self.estadoMotores == False:
-                raise ErrorMotores
             else:
                 if flag:
                     self.grabarTrayectoria = True
@@ -301,11 +300,7 @@ class Controlador:
                     return ("INFO: trayectoria guardada con exito")
                     
         except ErrorConexion as e:
-            return e
-        except ModoInvalido as e:
-            return e
-        except ErrorMotores as e:
-            return e
+            return str(e)
         except:
             return ("ERROR: no se pudo grabar la trayectoria")
    
@@ -327,25 +322,28 @@ class Controlador:
                 archivo.close()
                 #separamos la trayectoria
                 trayectoria = self.separarTrayectoria(trayectoria)
-                print(trayectoria)
+                #print(trayectoria)
                 #ejecutamos la trayectoria
+                respuesta=""
                 for comando in trayectoria:
                     self.serial.write(comando)
                     try:
-                        print(self.serial.read())
+                        respuesta+= self.serial.read()
                     except:
                         print("caracter raro")          
-                return ("INFO: trayectoria ejecutada con exito")
+                respuesta += "INFO: trayectoria ejecutada con exito"
+                return respuesta
                     
         except ErrorConexion as e:
-            return e
+            return str(e)
         except ModoInvalido as e:
             return "ERROR: pasar a modo automatico para ejecutar trayectorias"
         except ErrorMotores as e:
-            return e
+            return str(e)
         except:
             return ("ERROR: no se pudo ejecutar la trayectoria")
 
+#funcion aparte para separar la trayectoria en comandos GCode
     def separarTrayectoria(self, trayectoria):
         trayectoriaSeparada = []
         comando = ""

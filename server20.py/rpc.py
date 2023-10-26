@@ -39,7 +39,10 @@ class XRServer(object):
         self.server.register_function(self.do_movLineal, 'movLineal')
         self.server.register_function(self.do_getPos, 'getPos')
         self.server.register_function(self.do_gripper, 'gripper')
-        
+        self.server.register_function(self.do_aprendizaje, 'aprendizaje')
+        self.server.register_function(self.do_ejecutarTray, 'ejecutarTray')
+        self.server.register_function(self.do_listTray, 'listTray')
+        self.server.register_function(self.do_cerrarCliente, 'cerrarCliente')
 
 
         self.thread = Thread(target = self.run_server)
@@ -54,56 +57,81 @@ class XRServer(object):
         self.thread.join()
 
 
-    
+
     def do_listCom(self, arg1):
         """Funcion definida en otro modulo dentro del servidor 
         en este caso dentro del propio interprete de comandos"""
         return self.consola.do_listCom(arg1, "remoto")
     
-    def do_reporte(self, arg1):
+    def do_reporte(self, arg1, ID):
         """Funcion definida en otro modulo dentro del servidor 
         en este caso dentro del propio interprete de comandos"""
-        return self.consola.do_reporte(arg1, "remoto")
+        return self.consola.do_reporte(arg1, ID)
 
-    def do_conectar(self, arg1):
+    def do_conectar(self, arg1, ID):
         """Funcion definida en otro modulo dentro del servidor 
         en este caso dentro del propio interprete de comandos"""
-        return self.consola.do_conectar(arg1, "remoto")
+        return self.consola.do_conectar(arg1, ID)
     
-    def do_desconectar(self, arg1):
+    def do_desconectar(self, arg1, ID):
         """Funcion definida en otro modulo dentro del servidor 
         en este caso dentro del propio interprete de comandos"""
-        return self.consola.do_desconectar(arg1, "remoto")
+        return self.consola.do_desconectar(arg1, ID)
 
-    def do_motores(self, arg1):
+    def do_motores(self, modo, ID):
         """Funcion definida en otro modulo dentro del servidor 
         en este caso dentro del propio interprete de comandos"""
-        return self.consola.do_motores(arg1, "remoto")
+        return self.consola.do_motores(modo, ID)
     
-    def do_modo(self, arg1):
+    def do_modo(self, modo, ID):
         """Funcion definida en otro modulo dentro del servidor 
         en este caso dentro del propio interprete de comandos"""
-        return self.consola.do_modo(arg1, "remoto")
+        return self.consola.do_modo(modo, ID)
 
-    def do_homing(self, arg1):
+    def do_homing(self, arg1, ID):
         """Funcion definida en otro modulo dentro del servidor 
         en este caso dentro del propio interprete de comandos"""
-        return self.consola.do_homing(arg1, "remoto")
+        return self.consola.do_homing(arg1, ID)
     
-    def do_movLineal(self, arg1, arg2=None, arg3=None, arg4=None):
+    def do_movLineal(self, arg1, ID=None, x=None, y=None, z=None, vel=None):
         """Funcion definida en otro modulo dentro del servidor 
         en este caso dentro del propio interprete de comandos"""
-        return self.consola.do_movLineal(arg1, arg2, arg3, arg4)
+        return self.consola.do_movLineal(arg1, ID, x, y, z, vel)
     
-    def do_getPos(self, arg1):
+    def do_getPos(self, arg1, ID):
         """Funcion definida en otro modulo dentro del servidor 
         en este caso dentro del propio interprete de comandos"""
-        return self.consola.do_getPos(arg1, "remoto")
+        return self.consola.do_getPos(arg1, ID)
     
-    def do_gripper(self, arg1):
+    def do_gripper(self, modo, ID):
         """Funcion definida en otro modulo dentro del servidor 
         en este caso dentro del propio interprete de comandos"""
-        return self.consola.do_gripper(arg1, "remoto")
+        return self.consola.do_gripper(modo, ID)
+    
+    def do_aprendizaje(self, modo, fileName, ID):
+        """Funcion definida en otro modulo dentro del servidor 
+        en este caso dentro del propio interprete de comandos"""
+        return self.consola.do_aprendizaje(modo, fileName, ID)
+    #el fileName lo debo pedir antes en el cliente
+    
+    def do_ejecutarTray(self, tray, ID):
+        """Funcion definida en otro modulo dentro del servidor 
+        en este caso dentro del propio interprete de comandos"""
+        return self.consola.do_ejecutarTray(tray, ID)
+    #la tray la debo pedir antes en el cliente
+
+    def do_listTray(self, arg1, ID):
+        """Funcion definida en otro modulo dentro del servidor 
+        en este caso dentro del propio interprete de comandos"""
+        #La uso para leer los archivos en el directorio trayectorias
+        return self.consola.do_listTray(arg1, ID)
+
+    def do_cerrarCliente(self, arg1, ID):
+        """Funcion definida en otro modulo dentro del servidor
+        en este caso dentro del propio interprete de comandos"""
+        return self.consola.do_cerrarCliente(arg1, ID)
+    
+
     
     
     

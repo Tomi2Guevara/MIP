@@ -42,6 +42,9 @@ class SerialPort:
                         if lineas!=0:
                             if data.count("\n")<lineas:
                                 data += self.ser.readline().decode('utf-8')
+                                # si hay dos \n\n elimina el ultimo
+                                if data.count("\n")>lineas:
+                                    data=data[:data.rfind("\n")]
                             else:
                                 self.ser.flushInput() #borra el buffer de entrada
                                 break

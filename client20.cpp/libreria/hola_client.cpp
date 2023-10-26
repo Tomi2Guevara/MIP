@@ -22,8 +22,14 @@ void do_listCom(XmlRpcClient c);
 void do_reporte(XmlRpcClient c);
 void do_modo(XmlRpcClient c, string modo);
 void do_gripper(XmlRpcClient c, string modo);
+void do_aprendizaje(XmlRpcClient c, string modo, string fileName);
+void do_ejecutarTray(XmlRpcClient c, string fileName);
+void do_listTray(XmlRpcClient c);
+void do_cerrarCliente(XmlRpcClient c);
 
 
+//defino una constante para el ID
+int ID;
 
 int main(int argc, char* argv[])
 {
@@ -37,148 +43,129 @@ int main(int argc, char* argv[])
 
   // Una mirada a los métodos soportados por la API
   XmlRpcClient c(argv[1], port); //se crea un cliente XMLRPC para conectarse al servidor indicado en la linea de comandos
-  XmlRpcValue noArgs, result; //se crean dos variables de tipo XmlRpcValue para almacenar los argumentos y el resultado de las llamadas XMLRPC
   
 
-  // Requerimiento a la API para recuperar una ayuda sobre el método Saludo
-  XmlRpcValue oneArg;
-  oneArg[0] = "remote";
-  
+  std::cout << "Ingrese el ID del cliente: ";
+  std::cin >> ID;
+  //creo un menu de usuario para que elija que metodo quiere ejecutar
+  int opcion;
+  string modo;
+  string fileName;
+  char cont;
+  char flag;
+  do
+  {
+    std::cout << "Ingrese el numero del metodo que desea ejecutar:\n";
+    std::cout << "1. homing\n";
+    std::cout << "2. conectar\n";
+    std::cout << "3. desconectar\n";
+    std::cout << "4. motores\n";
+    std::cout << "5. modo\n";
+    std::cout << "6. movLineal\n";
+    std::cout << "7. getPos\n";
+    std::cout << "8. listCom\n";
+    std::cout << "9. reporte\n";
+    std::cout << "10. gripper\n";
+    std::cout << "11. aprendizaje\n";
+    std::cout << "12. ejecutarTrayectoria\n";
+    std::cout << "13. salir\n";
+    std::cout << "Opcion: ";
+    std::cin >> opcion;
 
-  // Llamada al metodo Saludo
-  if (c.execute("status", noArgs, result))
-    std::cout << result << "\n\n";
-  else
-    std::cout << "Error en la llamada a 'status'\n\n";
+    //limpio la pantalla
+    system("cls");
 
-  // Llamada al metodo list
-  oneArg[0] = "remote"; 
-  if (c.execute("list", oneArg, result))
-    std::cout << result << "\n\n";
-  else
-    std::cout << "Error en la llamada a 'list'\n\n";
-
-  // Llamada al metodo conectar
-  do_listCom(c);
-  do_modo(c, "auto");
-  do_modo(c, "manual");
-  do_conectar(c);
-  do_motores(c, "on");
-  do_homing(c);
-  do_gripper(c, "on");
-  do_gripper(c, "off");
-  do_movLineal(c, 53.1, 82.1, 54.1, 25);
-  do_movLineal(c, 100.1, 56.1, 200.1);
-  do_getPos(c);
-  do_reporte(c);
-  do_motores(c, "off");
-  do_desconectar(c);
-
-  // llamada al metodo suma, recibe dos numeros como parametros y devuelve la suma de ellos
-  XmlRpcValue twoArgs;
-  twoArgs[0] = 1;
-  twoArgs[1] = 2;
-  twoArgs[2] = 3;
-  if (c.execute("suma", twoArgs, result))
-    std::cout << result << "\n\n";
-  else
-    std::cout << "Error en la llamada a 'suma'\n\n";
-
+    switch (opcion)
+    {
+    case 1:
+      do_homing(c);
+      break;
+    case 2:
+      do_conectar(c);
+      break;
+    case 3:
+      do_desconectar(c);
+      break;
+    case 4:
+      std::cout << "Ingrese el modo on|off: ";
+      std::cin >> modo;
+      do_motores(c, modo);
+      break;
+    case 5:
+      std::cout << "Ingrese el modo auto|manual: ";
+      std::cin >> modo;
+      do_modo(c, modo);
+      break;
+    case 6:
+      float x, y, z, v;
+      std::cout << "Ingrese x: ";
+      std::cin >> x;
+      std::cout << "Ingrese y: ";
+      std::cin >> y;
+      std::cout << "Ingrese z: ";
+      std::cin >> z;
+      std::cout << "Desea especificar la velocidad? (s/n): ";
+      std::cin>>flag;
+      if (flag == 's'){
+        std::cout << "Ingrese v: ";
+        std::cin >> v;
+        do_movLineal(c, x, y, z, v);
+      }
+      else
+        do_movLineal(c, x, y, z);
+      break;
+    case 7:
+      do_getPos(c);
+      break;
+    case 8:
+      do_listCom(c);
+      break;
+    case 9:
+      do_reporte(c);
+      break;
+    case 10:
+      std::cout << "Ingrese el modo on|off: ";
+      std::cin >> modo;
+      do_gripper(c, modo);
+      break;
+    case 11:
+      std::cout << "Ingrese el modo on|off: ";
+      std::cin >> modo;
+      if (modo == "on"){
+        std::cout << "Ingrese el nombre del archivo donde va a guardar la trayectoria: ";
+        std::cin >> fileName;}
+      do_aprendizaje(c, modo, fileName);
+      break;
+    case 12:
+      std::cout<<"las trayectorias disponibles son: \n";
+      do_listTray(c);
+      std::cout << "Ingrese el nombre del archivo: ";
+      std::cin >> fileName;
+      do_ejecutarTray(c, fileName);
+      break;
+    case 13:
+      do_cerrarCliente(c);
+      std::cout << "Saliendo...\n";
+      break;
+    default:
+      std::cout << "Opcion incorrecta\n";
+      break;
+    }
+    std::cout << "Presione cualquier tecla para continuar...";
+    std::cin>>cont;
+    system("cls");
+  } while (opcion != 13);
+ 
   char salida;
-  cout << "Ingrese cualquier caracter para salir...";
-  cin >> salida;  
+  do_cerrarCliente(c);
+  std::cout << "Ingrese cualquier caracter para salir...";
+  std::cin >> salida;  
   return 0;
 }
 
-
-
-//ESTO HAY QUE HACERLO CON TODOS LOS METODOS
-// Llamada al metodo homing implementada en una funcion
-void do_homing(XmlRpcClient c)
-{
-  XmlRpcValue oneArg,result;
-  oneArg[0] = "remote";
-  if (c.execute("homing", oneArg, result))
-    std::cout << result << "\n\n";
-  else
-    std::cout << "Error en la llamada a 'homing'\n\n";
-}
-
-void do_conectar(XmlRpcClient c)
-{
-  XmlRpcValue oneArg, result;
-  oneArg[0] = "remote";
-  if (c.execute("conectar", oneArg, result))
-    std::cout << result << "\n\n";
-  else
-    std::cout << "Error en la llamada a 'conectar'\n\n";
-}
-
-void do_desconectar(XmlRpcClient c)
-{
-  XmlRpcValue oneArg, result;
-  oneArg[0] = "remote";
-  if (c.execute("desconectar", oneArg, result))
-    std::cout << result << "\n\n";
-  else
-    std::cout << "Error en la llamada a 'desconectar'\n\n";
-}
-
-void do_motores(XmlRpcClient c, string modo)
-{
-  XmlRpcValue oneArg, result;
-  oneArg[0] = modo;
-  if (c.execute("motores", oneArg, result))
-    std::cout << result << "\n\n";
-  else
-    std::cout << "Error en la llamada a 'motores'\n\n";
-  
-}
-
-void do_modo(XmlRpcClient c, string modo)
-{
-  XmlRpcValue oneArg, result;
-  oneArg[0] = modo;
-  if (c.execute("modo", oneArg, result))
-    std::cout << result << "\n\n";
-  else
-    std::cout << "Error en la llamada a 'modo'\n\n";
-}
-
-void do_movLineal(XmlRpcClient c, float x, float y, float z, float v)
-{
-  XmlRpcValue fourArgs, result;
-  fourArgs[0] = x;
-  fourArgs[1] = y;
-  fourArgs[2] = z;
-  fourArgs[3] = v;
-  if (c.execute("movLineal", fourArgs, result))
-    std::cout << result << "\n\n";
-  else
-    std::cout << "Error en la llamada a 'movLineal'\n\n";
-}
-void do_movLineal(XmlRpcClient c, float x, float y, float z)
-{
-  XmlRpcValue threeArgs, result;
-  threeArgs[0] = x;
-  threeArgs[1] = y;
-  threeArgs[2] = z;
-  if (c.execute("movLineal", threeArgs, result))
-    std::cout << result << "\n\n";
-  else
-    std::cout << "Error en la llamada a 'movLineal'\n\n";
-  
-}
-
-void do_getPos(XmlRpcClient c)
-{
-  XmlRpcValue oneArg, result;
-  oneArg[0] = "remote";
-  if (c.execute("getPos", oneArg, result))
-    std::cout << result << "\n\n";
-  else
-    std::cout << "Error en la llamada a 'getPos'\n\n";
-}
+//---------------------------------------------------------------//
+//--------FUNCIONES QUE LLAMAN A LOS METODOS DEL SERVIDOR--------//
+//---------------------------------------------------------------//
 
 void do_listCom(XmlRpcClient c)
 {
@@ -190,22 +177,175 @@ void do_listCom(XmlRpcClient c)
     std::cout << "Error en la llamada a 'listCom'\n\n";
 }
 
-void do_reporte(XmlRpcClient c)
+//El ID (xxxx) lo defini como variable global para este codigo, pero se puede pasar como argumento a cada funcion
+void do_conectar(XmlRpcClient c)
 {
   XmlRpcValue oneArg, result;
   oneArg[0] = "remote";
+  oneArg[1] = ID;
+  if (c.execute("conectar", oneArg, result))
+    std::cout << result << "\n\n";
+  else
+    std::cout << "Error en la llamada a 'conectar'\n\n";
+}
+
+void do_desconectar(XmlRpcClient c)
+{
+  XmlRpcValue oneArg, result;
+  oneArg[0] = "remote";
+  oneArg[1] = ID;
+  if (c.execute("desconectar", oneArg, result))
+    std::cout << result << "\n\n";
+  else
+    std::cout << "Error en la llamada a 'desconectar'\n\n";
+}
+
+//recibe modo on/off
+void do_motores(XmlRpcClient c, string modo)
+{
+  XmlRpcValue oneArg, result;
+  oneArg[0] = modo;
+  oneArg[1] = ID;
+  if (c.execute("motores", oneArg, result))
+    std::cout << result << "\n\n";
+  else
+    std::cout << "Error en la llamada a 'motores'\n\n";
+  
+}
+
+//recibe modo manual/auto
+void do_modo(XmlRpcClient c, string modo)
+{
+  XmlRpcValue oneArg, result;
+  oneArg[0] = modo;
+  oneArg[1] = ID; //se agrega el parametro "remote" para que el servidor sepa que el cliente es remoto
+  if (c.execute("modo", oneArg, result))
+    std::cout << result << "\n\n";
+  else
+    std::cout << "Error en la llamada a 'modo'\n\n";
+}
+
+void do_getPos(XmlRpcClient c)
+{
+  XmlRpcValue oneArg, result;
+  oneArg[0] = "remote";
+  oneArg[1] = ID;
+  if (c.execute("getPos", oneArg, result))
+    std::cout << result << "\n\n";
+  else
+    std::cout << "Error en la llamada a 'getPos'\n\n";
+}
+
+void do_homing(XmlRpcClient c)
+{
+  XmlRpcValue oneArg,result;
+  oneArg[0] = "remote";
+  oneArg[1] = ID; 
+  if (c.execute("homing", oneArg, result))
+    std::cout << result << "\n\n";
+  else
+    std::cout << "Error en la llamada a 'homing'\n\n";
+}
+
+void do_movLineal(XmlRpcClient c, float x, float y, float z, float v)
+{
+  XmlRpcValue fourArgs, result;
+  fourArgs[0] = "remote";
+  fourArgs[1] = ID;
+  fourArgs[2] = x;
+  fourArgs[3] = y;
+  fourArgs[4] = z;
+  fourArgs[5] = v;
+  if (c.execute("movLineal", fourArgs, result))
+    std::cout << result << "\n\n";
+  else
+    std::cout << "Error en la llamada a 'movLineal'\n\n";
+}
+
+void do_movLineal(XmlRpcClient c, float x, float y, float z)
+{
+  XmlRpcValue threeArgs, result;
+  threeArgs[0] = "remote";
+  threeArgs[1] = ID;
+  threeArgs[2] = x;
+  threeArgs[3] = y;
+  threeArgs[4] = z;
+  if (c.execute("movLineal", threeArgs, result))
+    std::cout << result << "\n\n";
+  else
+    std::cout << "Error en la llamada a 'movLineal'\n\n";
+  
+}
+
+//recibe modo on/off
+void do_gripper(XmlRpcClient c, string modo)
+{
+  XmlRpcValue oneArg, result;
+  oneArg[0] = modo;
+  oneArg[1] = ID;
+  if (c.execute("gripper", oneArg, result))
+    std::cout << result << "\n\n";
+  else
+    std::cout << "Error en la llamada a 'gripper'\n\n";
+}
+
+//recibe modo on/off y nombre del archivo donde se guardara la trayectoria
+void do_aprendizaje(XmlRpcClient c, string modo, string fileName)
+{
+  XmlRpcValue twoArgs, result;
+  twoArgs[0] = modo;
+  twoArgs[1] = fileName;
+  twoArgs[2] = ID;
+  if (c.execute("aprendizaje", twoArgs, result))
+    std::cout << result << "\n\n";
+  else
+    std::cout << "Error en la llamada a 'aprendizaje'\n\n";
+}
+
+//recibe nombre del archivo a ejecutar en modo automatico
+void do_ejecutarTray(XmlRpcClient c, string fileName)
+{
+  XmlRpcValue oneArg, result;
+  oneArg[0] = fileName;
+  oneArg[1] = ID;
+  if (c.execute("ejecutarTray", oneArg, result))
+    std::cout << result << "\n\n";
+  else
+    std::cout << "Error en la llamada a 'ejecutarTray'\n\n";
+}
+
+
+void do_reporte(XmlRpcClient c)
+{
+  XmlRpcValue oneArg, result;
+  oneArg[0] = "remoto";
+  oneArg[1] = ID;
   if (c.execute("reporte", oneArg, result))
     std::cout << result << "\n\n";
   else
     std::cout << "Error en la llamada a 'reporte'\n\n";
 }
 
-void do_gripper(XmlRpcClient c, string modo)
+//lista las trayectorias disponibles para ejecutar
+void do_listTray(XmlRpcClient c)
 {
   XmlRpcValue oneArg, result;
-  oneArg[0] = modo;
-  if (c.execute("gripper", oneArg, result))
+  oneArg[0] = "remoto";
+  oneArg[1] = ID;
+  if (c.execute("listTray", oneArg, result))
     std::cout << result << "\n\n";
   else
-    std::cout << "Error en la llamada a 'gripper'\n\n";
+    std::cout << "Error en la llamada a 'listTray'\n\n";
+}
+
+//libera la conexion del cliente
+void do_cerrarCliente(XmlRpcClient c)
+{
+  XmlRpcValue oneArg, result;
+  oneArg[0] = "remoto";
+  oneArg[1] = ID;
+  if (c.execute("cerrarCliente", oneArg, result))
+    std::cout << result << "\n\n";
+  else
+    std::cout << "Error en la llamada a 'cerrarCliente'\n\n";
 }
