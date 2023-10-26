@@ -10,4 +10,5 @@ esta libreria funciona en windows porque tiene algunas modificaciones, para linu
 INSTRUCCIONES ARDUINO
 Hay un problema con el comando M114 devuelve "INFO:  URRENT POSITION: [X:0.00 Y:170.00 Z:120.00 E:0.00]"
 Modificando el codigo en arduino agregando un espacio antes de la C funciona bien
-"INFO: CURRENT POSITION: [X:0.00 Y:170.00 Z:120.00 E:0.00]"
+"INFO: CURRENT POSITION: [X:0.00 Y:170.00 Z:120.00 E:0.00]" 
+Subo el firmware de arduino modificado
