@@ -1,0 +1,3 @@
+C:/Users/tguev/Documents/Fing/POO/intProyect/cmake-build-debug/CMakeFiles/intProyect.dir
+C:/Users/tguev/Documents/Fing/POO/intProyect/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/tguev/Documents/Fing/POO/intProyect/cmake-build-debug/CMakeFiles/rebuild_cache.dir
