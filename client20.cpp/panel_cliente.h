@@ -7,9 +7,13 @@
 
     class Panel_cliente {
         private:
+            int* ID;
+            std::string* puerto;
+            std::string* IP;
 
         public:
             Panel_cliente();
+            Panel_cliente(int* id, std::string* puerto, std::string* IP);
             void do_homing(XmlRpcClient c);
             void do_conectar(XmlRpcClient c);
             void do_desconectar(XmlRpcClient c);
