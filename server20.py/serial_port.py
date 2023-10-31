@@ -18,7 +18,7 @@ class SerialPort:
         """
             
         # Configura el puerto serie
-        self.ser = serial.Serial(port, baudrate)  # Cambia 'COM3' al puerto correcto
+        self.ser = serial.Serial(port, baudrate)  #se crea el objeto serie de pyserial 
         self.ser.flushInput() #borra el buffer de entrada
         self.ser.flushOutput() #borra el buffer de salida
 

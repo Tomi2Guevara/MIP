@@ -17,6 +17,8 @@ class Controlador:
         self.fechaConexion = None
         self.grabarTrayectoria = False
         self.record = ""
+        self.serial = None     
+
 
 
     def getEstadoConexion(self):
