@@ -1,7 +1,8 @@
 //
 // Created by tguev on 27/10/2023.
 //
-#include string
+#include <string>
+using namespace std;
 #include "libreria/XmlRpc.h"
 using namespace XmlRpc;
 #ifndef INTPROYECT_PANEL_CLIENTE_H
