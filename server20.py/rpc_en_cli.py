@@ -95,7 +95,7 @@ class ConsolaCLI(Cmd):
 
 ########################################################################            
     def do_getId(self,args):
-        """Obtiene el id del cliente que esta usando el robot."""
+        """Obtiene el ID del cliente que esta usando el robot."""
         print(self.idAct)
     
     def getOrdenes(self):
@@ -123,7 +123,7 @@ class ConsolaCLI(Cmd):
             print(respuesta)
     
     def do_motores(self, modo, ID=None):
-        """Activa/Desactiva los motores del robot. Se usa motores on|off"""
+        """Activa/Desactiva los motores del robot. Se usan motores on|off."""
         if ID is not None:
             if ID==self.idAct or self.idAct=="0000":
                 if modo == "on":
@@ -149,7 +149,7 @@ class ConsolaCLI(Cmd):
                 print("ERROR: argumentos incorrectos")           
 
     def do_modo(self, modo, ID=None):
-        """Cambia el modo de funcionamiento del robot. Se usa modo manual|auto"""
+        """Cambia el modo de funcionamiento del robot. Se usa modo manual|auto."""
         if ID is not None:
             if ID==self.idAct or self.idAct=="0000":
                 respuesta = self.controlador.cambiarModo(modo)
@@ -168,7 +168,7 @@ class ConsolaCLI(Cmd):
                 print("ERROR: argumentos incorrectos")
 
     def do_getPos(self, arg1, ID=None):
-        """Obtiene la posicion actual del del efector final."""
+        """Obtiene la posicion actual del efector final."""
         if ID is not None:
             if ID==self.idAct or self.idAct=="0000":
                 respuesta = self.controlador.getCurrentPosition()
@@ -202,7 +202,7 @@ class ConsolaCLI(Cmd):
 
     
     def do_movLineal(self, arg1, ID=None, x=None, y=None, z=None, vel=None ):
-        """Realiza un movimiento lineal en el dispositivo. Se usa movLineal x y z vel"""
+        """Realiza un movimiento lineal en el dispositivo. Se usa movLineal x y z vel. Ejemplo: movLineal 120 100 20 20."""
         
         if ID is not None:
             if ID==self.idAct or self.idAct=="0000":
@@ -331,7 +331,7 @@ class ConsolaCLI(Cmd):
             print(reporte.crearReporte(self.controlador))  
 
     def do_listTray(self, arg1, ID=None):
-        """Lista las trayectorias disponibles en directroio trayectorias."""
+        """Lista las trayectorias disponibles en directorio trayectorias."""
         if ID is not None:
             respuesta="Trayectorias disponibles:\n"
             for file in os.listdir("trayectorias"):

@@ -1,15 +1,14 @@
 ----------------CONECTAR ROBOT-ID admin-----------------
-Hora de ejecucion: 18:07:40
+Hora de ejecucion: 16:56:32
 Especificaciones: Puerto: COM6
 Baudrate: 115200
 INFO: ROBOT ONLINE
 INFO: conexion exitosa
-INFO: Robot conectado en el puerto COM6
+INFO: Robot conectado en el puerto /dev/cu.usbmodem1101
 ---------------------------------------------------------------
 
-----------------GET POSITION-ID admin-----------------
-Hora de ejecucion: 18:07:41
-INFO: ABSOLUTE MODE
-INFO: CURRENT POSITION: [X:0.00 Y:170.00 Z:120.00 E:0.00]
+----------------DESCONECTAR ROBOT-ID admin-----------------
+Hora de ejecucion: 16:57:08
+INFO: robot desconectado
 ---------------------------------------------------------------
 

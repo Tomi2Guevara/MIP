@@ -11,7 +11,7 @@ class Controlador:
         self.estadoConexion = False
         self.estadoMotores = False
         self.estadoEfector = False
-        self.modoTrabajo = "Manual" 
+        self.modoTrabajo = "Manual"
         self.posEfector = {"X":0.00,"Y":170.00,"Z":120.00}
         self.horaConexion = None
         self.fechaConexion = None
@@ -37,10 +37,10 @@ class Controlador:
         return self.fechaConexion
     def getModo(self):
         return self.modoTrabajo
-   
+
 
 #defino valores por defecto para el puerto y el baudrate por si no se los paso
-    def conectar(self, port="COM6", baudrate=115200):
+    def conectar(self, port="/dev/cu.usbmodem1101", baudrate=115200):
         try:
             if self.estadoConexion == True:
                 raise ErrorConexion
@@ -57,9 +57,9 @@ class Controlador:
             self.estadoConexion = True
             self.horaConexion = time.strftime("%H:%M:%S")
             self.fechaConexion = time.strftime("%d/%m/%y")
-            respuesta+="INFO: Robot conectado en el puerto "+ port 
-            return respuesta 
-    
+            respuesta+="INFO: Robot conectado en el puerto "+ port
+            return respuesta
+
     def desconectar(self):
         try:
             if self.estadoConexion == False:
@@ -72,10 +72,10 @@ class Controlador:
             return ("ERROR: no se pudo desconectar el robot")
         else:
             self.estadoConexion = False
-            return ("INFO: robot desconectado")    
-    
+            return ("INFO: robot desconectado")
+
     def cambiarModo(self, modo):
-        
+
         if modo == "auto":
             self.modoTrabajo = "Automatico"
             return ("INFO: modo automatico activado")
@@ -84,7 +84,7 @@ class Controlador:
             return ("INFO: modo manual activado")
         else:
             return ("ERROR: modo invalido")
-        
+
     def activarMotores(self):
         #debo verificar que el robot este conectado
         try:
@@ -100,8 +100,8 @@ class Controlador:
         else:
             self.estadoMotores = True
             return ("INFO: MOTORS ENABLED")
-            #return respuesta          
-        
+            #return respuesta
+
     def desactivarMotores(self):
         #debo verificar que el robot este conectado
         try:
@@ -118,7 +118,7 @@ class Controlador:
             self.estadoMotores = False
             return ("INFO: MOTORS DISABLED")
             #return respuesta
-        
+
     def homing(self):
         #verifico que el robot este conectado y en modo manual
         try:
@@ -144,8 +144,8 @@ class Controlador:
             return str(e)
         else:
             return respuesta
-        
-    
+
+
     def getCurrentPosition(self):
         #verifico que el robot este conectado
         try:
@@ -163,7 +163,7 @@ class Controlador:
         else:
             return respuesta
             #return str(self.posEfector)
-            
+
 
     def movimientoLineal(self, posFinal, vel=20):
         #verifico que el robot este conectado, en modo manual, con los motores activados y que la velocidad este dentro del rango
@@ -179,14 +179,14 @@ class Controlador:
             else:
                 comando="G0X" + str(posFinal[0]) + "Y" + str(posFinal[1]) + "Z" + str(posFinal[2]) + "-F" + str(vel)
                 self.serial.write(comando)
-                respuesta=self.serial.read() 
+                respuesta=self.serial.read()
                 #verifico si está dentro del espacio de trabajo
                 if "ERROR" in respuesta:
                     raise ErrorWorkSpace
                 else:
                     self.posEfector = {"X":posFinal[0],"Y":posFinal[1],"Z":posFinal[2]}
                     if self.grabarTrayectoria: self.record += comando
-  
+
                 #respuesta = "INFO: movimiento lineal realizado con exito\nINFO: CURRENT POSITION: " + str(self.posEfector)
         except LimitVelLin as e:
                     return str(e)
@@ -202,7 +202,7 @@ class Controlador:
          #   return ("ERROR: no se pudo realizar el movimiento lineal")
         else:
             return respuesta
-    
+
 
     '''def movimientoLineal(self,posFinal):
         #verificaciones
@@ -228,8 +228,8 @@ class Controlador:
             return ("ERROR: no se pudo realizar el movimiento lineal")
         else:
             return respuesta'''
-        
-    
+
+
     #para el efector hacemos algo similar a los motores
     def activarEfector(self):
         #verifico que el robot este conectado, en modo manual y con los motores activados
@@ -298,12 +298,12 @@ class Controlador:
                     archivo.close()
                     self.record = ""
                     return ("INFO: trayectoria guardada con exito")
-                    
+
         except ErrorConexion as e:
             return str(e)
         except:
             return ("ERROR: no se pudo grabar la trayectoria")
-   
+
 
 # Vamos a hacer una funcion para separar G28G0X25.0Y54.0Z56.0-F20M3 en G28, G0X25.0Y54.0Z56.0-F20, M3 es decir separamos cunado es una letra mayuscula G o M
 
@@ -330,10 +330,10 @@ class Controlador:
                     try:
                         respuesta+= self.serial.read()
                     except:
-                        print("caracter raro")          
+                        print("caracter raro")
                 respuesta += "INFO: trayectoria ejecutada con exito"
                 return respuesta
-                    
+
         except ErrorConexion as e:
             return str(e)
         except ModoInvalido as e:
@@ -362,19 +362,18 @@ class Controlador:
 
 
 
-   
-
-    
-
-
-    
 
 
 
-    
 
 
 
-    
 
-    
+
+
+
+
+
+
+
+
