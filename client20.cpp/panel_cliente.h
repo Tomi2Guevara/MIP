@@ -1,19 +1,28 @@
 //
 // Created by tguev on 27/10/2023.
 //
-
+#include string
+#include "libreria/XmlRpc.h"
+using namespace XmlRpc;
 #ifndef INTPROYECT_PANEL_CLIENTE_H
 #define INTPROYECT_PANEL_CLIENTE_H
 
     class Panel_cliente {
         private:
-            int* ID;
-            std::string* puerto;
-            std::string* IP;
+            int ID;
+            std::string puerto;
+            std::string IP;
+
 
         public:
             Panel_cliente();
-            Panel_cliente(int* id, std::string* puerto, std::string* IP);
+            Panel_cliente(int id, std::string puerto, std::string IP);
+            void setID(int id);
+            void setPuerto(std::string puerto);
+            void setIP(std::string IP);
+            int getID();
+            std::string getPuerto();
+            std::string getIP();
             void do_homing(XmlRpcClient c);
             void do_conectar(XmlRpcClient c);
             void do_desconectar(XmlRpcClient c);

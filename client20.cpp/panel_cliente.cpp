@@ -14,7 +14,7 @@ using namespace XmlRpc;
 
 Panel_cliente::Panel_cliente(){}
 
-Panel_cliente::Panel_cliente(int* id, std::string* puerto, std::string* IP)
+Panel_cliente::Panel_cliente(int id, std::string puerto, std::string IP)
 {
     this->ID = id;
     this->puerto = puerto;

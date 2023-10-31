@@ -1,22 +1,28 @@
-#include "cliente.h"
-#include <istream>
-using namespace std;
+// Purpose: Header file for cl_UI.cpp
 #include <string>
-#include <vector>
+#include "panel_cliente.h"
+#include <exception> 
 
 class cl_UI {
 private:
-    Cliente* cliente;
+    Panel_cliente* cliente;
 public:
     cl_UI();
-    vector <string> inicio();
-    void mostrarMenu();
+    int inicio();
     void mostrarDatosCliente();
     void cambiarDatosCliente();
-    void conectarCliente();
-    void desconectarCliente();
-    void enviarMensajeCliente();
-    void recibirMensajeCliente();
-    int panelDeControl();
-
+    void panelDeControl(int* opcion);
+    void acciones(int* opcion);
+    void msjError(string metodo);
+    void setCliente(Panel_cliente* cliente);
+    void case4();
+    void case5(string* modo);
+    void case6(float* x, float* y, float* z, float* v, char* flag);
+    void case10(string* modo);
+    void case11(string* modo, string* fileName);
+    void case12A();
+    void case12B(string* fileName);
+    void case13();
+    void case14();
+    void defaultCase();
 };
