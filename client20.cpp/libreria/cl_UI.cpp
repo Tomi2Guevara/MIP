@@ -21,8 +21,8 @@ void cl_UI::inicio(string puerto, string IP){
     std::cout << "\nBienvenido al panel de control del robot" << std::endl;
     std::cout << "Ingrese su ID: ";
     std::cin >> ID;
-    Panel_cliente cli = Panel_cliente(ID, puerto, IP);
-    this->cli = &cli;
+    Panel_cliente* cli = new Panel_cliente(ID, puerto, IP);
+    this->cli = cli;
      
 }
 
@@ -141,7 +141,7 @@ int cl_UI::loop(XmlRpcClient c) {
               if (flag == 's'){
                   std::cout << "Ingrese v: ";
                   std::cin >> v;
-                  cli->do_movLineal(c, x, y, z);
+                  cli->do_movLineal(c, x, y, z, v);
               }
               else
                   cli->do_movLineal(c, x, y, z);

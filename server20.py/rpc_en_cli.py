@@ -32,10 +32,6 @@ class ConsolaCLI(Cmd):
         self.idAct="0000"
         self.idAdmin="0000"
         
-
-    #debemos identificar cada usuario que se conecta al servidor
-    #Cuando se conecta un usuario al servidor se le asigna un id
-
     
     def postcmd(self, stop, line):
         '''This method is called just after a command has been executed.'''
@@ -363,7 +359,6 @@ class ConsolaCLI(Cmd):
             respuesta="Trayectorias disponibles:\n"
             for file in os.listdir("trayectorias"):
                 respuesta += file+"\n"
-            print(respuesta)
             return respuesta     
 
     def do_cerrarCliente(self, arg1, ID=None):
@@ -400,7 +395,6 @@ class ConsolaCLI(Cmd):
         print(respuesta)
             
 
-    
     #al llamar a esta funcion se debe hacer de esta manera: suma 1 2 pero no suma(1,2) ni suma(1,2,3)
     #porque el interprete de comandos no lo va a reconocer
 
