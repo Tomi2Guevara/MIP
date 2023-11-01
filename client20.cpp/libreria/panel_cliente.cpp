@@ -9,7 +9,6 @@
 using namespace std;
 #include "XmlRpc.h"
 using namespace XmlRpc;
-
 #include "panel_cliente.h"
 
 Panel_cliente::Panel_cliente(){}

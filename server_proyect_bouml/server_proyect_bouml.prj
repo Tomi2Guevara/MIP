@@ -1,7 +1,7 @@
 format 224
 "server_proyect_bouml"
-  revision 1
-  modified_by 2 "enzot"
+  revision 2
+  modified_by 2 "tguev"
 
 
   
@@ -45,4 +45,6 @@ format 224
   mark_for_import
   
   package_ref 128002 // Server
+
+  package_ref 134530 // cliente
 end

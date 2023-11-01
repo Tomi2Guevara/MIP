@@ -1,12 +1,8 @@
 
 #include <iostream>
 #include <string>
-#include <exception>
-#include <sstream>
-#include <unistd.h>
-#include <limits>
-#include <vector>
 using namespace std;
+#include <sstream>
 #include "cl_UI.h"
 #include "panel_cliente.h"
 
@@ -19,13 +15,15 @@ void cl_UI::setCliente(Panel_cliente* cliente) {
     this->cli = cliente;
 }
 
-int cl_UI::inicio(){
+void cl_UI::inicio(string puerto, string IP){
     int ID;
     std::cout << "\n==========================================================================\n";
     std::cout << "\nBienvenido al panel de control del robot" << std::endl;
     std::cout << "Ingrese su ID: ";
     std::cin >> ID;
-    return ID;    
+    Panel_cliente cli = Panel_cliente(ID, puerto, IP);
+    this->cli = &cli;
+     
 }
 
 void cl_UI::ListCom() {
@@ -74,7 +72,7 @@ void cl_UI::msjError(std::string metodo) {
 }
 
 
-int cl_UI::loop(Panel_cliente cli ,XmlRpcClient c) {
+int cl_UI::loop(XmlRpcClient c) {
     
     string comando="";
     int opcion=0;
@@ -86,110 +84,115 @@ int cl_UI::loop(Panel_cliente cli ,XmlRpcClient c) {
 
     ListCom();
 
-    while (opcion != 17){
+    try{
 
-        //muestro un promt >> 
-        std::cout << ">> ";
+      while (opcion != 17){
 
+          //muestro un promt >> 
+          std::cout << ">> ";
+
+          std::getline(cin, comando);
+          if (comando == "")
+          std::getline(cin, comando);
         
-        std::getline(cin, comando);
-        if (comando == "")
-            std::getline(cin, comando);
-        
-
-        opcion = decode(comando);
+          opcion = decode(comando);
        
 
-        switch (opcion)
-        {
-        case 1:
-            cli.do_conectar(c);
-            break;
-        case 2:
-            cli.do_desconectar(c);
-            break;
-        case 3:
-            modo = "on";
-            cli.do_motores(c, modo);
-            break;
-        case 4:
-            modo = "off";
-            cli.do_motores(c, modo);
-            break;
-        case 5:
-            modo = "auto";
-            cli.do_modo(c, modo);
-            break;
-        case 6:
-            modo = "manual";
-            cli.do_modo(c, modo);
-            break;
-        case 7:
-            cli.do_getPos(c);
-            break;
-        case 8:
-            cli.do_homing(c);
-            break;
-        case 9:
-            float x, y, z, v;
-            std::cout << "Ingrese x: ";
-            std::cin >> x;
-            std::cout << "Ingrese y: ";
-            std::cin >> y;
-            std::cout << "Ingrese z: ";
-            std::cin >> z;
-            std::cout << "Desea especificar la velocidad? (s/n): ";
-            std::cin>>flag;
-            if (flag == 's'){
-                std::cout << "Ingrese v: ";
-                std::cin >> v;
-                cli.do_movLineal(c, x, y, z, v);
-            }
-            else
-                cli.do_movLineal(c, x, y, z);
-            break;
-        case 10:
-            cli.do_reporte(c);
-            break;
-        case 11:
-            ListCom();
-            break;
-        case 12:
-            modo = "on";
-            cli.do_gripper(c, modo);
-            break;
-        case 13:
-            modo = "off";
-            cli.do_gripper(c, modo);
-            break;
-        case 14:
-            std::cout << "Ingrese el nombre del archivo: ";
-            std::cin >> fileName;
-            cli.do_aprendizaje(c, "on", fileName);
-            break;
-        case 15:
-            cli.do_aprendizaje(c, "off", "");
-            break;
-        case 16:
-            std::cout<<"Las trayectorias disponibles son: \n";
-            cli.do_listTray(c);
-            std::cout << "Ingrese el nombre del archivo: ";
-            std::cin >> fileName;
-            cli.do_ejecutarTray(c, fileName);
-            break;
-        case 17:
-            cli.do_desconectar(c);
-            cli.do_cerrarCliente(c);
-            break;
-        case 18:
-            comando = comando.substr(5, comando.length());
-            std::cout << helpCommand(comando);
-            break;
-        default:
-            std::cout << "Comando no reconocido\n";
-            break;
-        }
-  } 
+          switch (opcion)
+          {
+          case 1:
+              cli->do_conectar(c);
+              break;
+          case 2:
+              cli->do_desconectar(c);
+              break;
+          case 3:
+              modo = "on";
+              cli->do_motores(c, modo);
+              break;
+          case 4:
+              modo = "off";
+              cli->do_motores(c, modo);
+              break;
+          case 5:
+              modo = "auto";
+              cli->do_modo(c, modo);
+              break;
+          case 6:
+              modo = "manual";
+              cli->do_modo(c, modo);
+              break;
+          case 7:
+              cli->do_getPos(c);
+              break;
+          case 8:
+              cli->do_homing(c);
+              break;
+          case 9:
+              float x, y, z, v;
+              std::cout << "Ingrese x: ";
+              std::cin >> x;
+              std::cout << "Ingrese y: ";
+              std::cin >> y;
+              std::cout << "Ingrese z: ";
+              std::cin >> z;
+              std::cout << "Desea especificar la velocidad? (s/n): ";
+              std::cin>>flag;
+              if (flag == 's'){
+                  std::cout << "Ingrese v: ";
+                  std::cin >> v;
+                  cli->do_movLineal(c, x, y, z);
+              }
+              else
+                  cli->do_movLineal(c, x, y, z);
+              break;
+          case 10:
+              cli->do_reporte(c);
+              break;
+          case 11:
+              ListCom();
+              break;
+          case 12:
+              modo = "on";
+              cli->do_gripper(c, modo);
+              break;
+          case 13:
+              modo = "off";
+              cli->do_gripper(c, modo);
+              break;
+          case 14:
+              std::cout << "Ingrese el nombre del archivo: ";
+              std::cin >> fileName;
+              cli->do_aprendizaje(c, "on", fileName);
+              break;
+          case 15:
+              cli->do_aprendizaje(c, "off", "");
+              break;
+          case 16:
+              std::cout<<"Las trayectorias disponibles son: \n";
+              cli->do_listTray(c);
+              std::cout << "Ingrese el nombre del archivo: ";
+              std::cin >> fileName;
+              cli->do_ejecutarTray(c, fileName);
+              break;
+          case 17:
+              cli->do_desconectar(c);
+              cli->do_cerrarCliente(c);
+              break;
+          case 18:
+              comando = comando.substr(5, comando.length());
+              std::cout << helpCommand(comando);
+              break;
+          default:
+              std::cout << "Comando no reconocido\n";
+              break;
+          }
+      }
+      } catch(const std::exception& e) {
+        cout << "Error en la llamada a 'loop': " << e.what() << "\n\n";
+        msjError("loop");
+      }
+   
     
     char salida;
     std::cout << "Ingrese cualquier caracter para salir...";
