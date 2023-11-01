@@ -315,10 +315,16 @@ class ConsolaCLI(Cmd):
                 print("Tryectorias disponibles:")
                 for file in os.listdir("trayectorias"):
                     print(file)
+                #pedimos el nombre del archivo y controlamos que exista
                 print("Ingrese el nombre del archivo que desea ejecutar")
                 file = input()
-                file = "./trayectorias/"+file
-                respuesta=self.controlador.ejecutarTrayectoria(file)
+                file="./trayectorias/"+file
+                if os.path.isfile(file):
+                    respuesta = self.controlador.ejecutarTrayectoria(str(file))
+                    self.log.add(Orden("EJECUTAR TRAYECTORIA-ID admin",time.strftime("%H:%M:%S"),respuesta,"Nombre del archivo: "+str(file)))
+                    print(respuesta)
+                else:
+                    respuesta="ERROR: el archivo no existe"
                 self.log.add(Orden("EJECUTAR TRAYECTORIA-ID admin",time.strftime("%H:%M:%S"),respuesta,"Nombre del archivo: "+str(file)))
                 print(respuesta)  
 
@@ -350,29 +356,12 @@ class ConsolaCLI(Cmd):
             self.log.add(Orden("DESCONEXION CLIENTE-ID"+str(ID),time.strftime("%H:%M:%S"),respuesta))
             return respuesta
         else:
-            print("ERROR: argumentos incorrectos")
-
-
-##############################################################
-############# FUNCIONES del ejemplo original #################
-##############################################################
-
-    def do_list(self, arg1, arg2=None):
-        """Lista elementos."""
-        if arg2 is not None:
-            return (self.elements)
-        #al enviar el objeto va a ser recibido {1,2,TRES,Y EL RESTO}
-        else:   
-            print(self.elements)
-
-    def do_suma(self, arg1, arg2=None, arg3=None):
-        """Suma dos numeros."""
-        #separo los argumentos por espacios
-        if arg2 is not None:
-            #retorno un string con los argumentos separados por espacios
-            return (str(arg1) + " " + str(arg2)+ " " + str(arg3))
-        else:
-            print(str(arg1))
+            #reseteo el ID
+            self.idAct="0000"
+            respuesta="INFO: Control liberado"
+            self.log.add(Orden("DESCONEXION CLIENTE-ID admin",time.strftime("%H:%M:%S"),respuesta))
+            print(respuesta)
+            
 
     
     #al llamar a esta funcion se debe hacer de esta manera: suma 1 2 pero no suma(1,2) ni suma(1,2,3)

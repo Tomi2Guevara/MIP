@@ -1,15 +1,5 @@
-----------------CONECTAR ROBOT-ID admin-----------------
-Hora de ejecucion: 18:07:40
-Especificaciones: Puerto: COM6
-Baudrate: 115200
-INFO: ROBOT ONLINE
-INFO: conexion exitosa
-INFO: Robot conectado en el puerto COM6
----------------------------------------------------------------
-
-----------------GET POSITION-ID admin-----------------
-Hora de ejecucion: 18:07:41
-INFO: ABSOLUTE MODE
-INFO: CURRENT POSITION: [X:0.00 Y:170.00 Z:120.00 E:0.00]
+----------------INICIO SERVIDOR RPC-----------------
+Hora de ejecucion: 09:26:39
+Servidor RPC iniciado en el puerto: ('127.0.0.1', 8891)
 ---------------------------------------------------------------
 

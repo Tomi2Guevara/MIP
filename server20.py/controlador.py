@@ -167,7 +167,7 @@ class Controlador:
             #return str(self.posEfector)
             
 
-    def movimientoLineal(self, posFinal, vel=20):
+    def movimientoLineal(self, posFinal, vel=None):
         #verifico que el robot este conectado, en modo manual, con los motores activados y que la velocidad este dentro del rango
         try:
             if self.estadoConexion == False:
@@ -176,10 +176,21 @@ class Controlador:
                 raise ModoInvalido
             elif self.estadoMotores == False:
                 raise ErrorMotores
-            elif vel > self.velLinMax:
-                raise LimitVelLin
-            else:
-                comando="G0X" + str(posFinal[0]) + "Y" + str(posFinal[1]) + "Z" + str(posFinal[2]) + "-F" + str(vel)
+            elif vel is not None:
+                if vel > self.velLinMax:
+                    raise LimitVelLin
+                else:
+                    comando="G0X" + str(posFinal[0]) + "Y" + str(posFinal[1]) + "Z" + str(posFinal[2]) + "-F" + str(vel)
+                    self.serial.write(comando)
+                    respuesta=self.serial.read() 
+                    #verifico si está dentro del espacio de trabajo
+                    if "ERROR" in respuesta:
+                        raise ErrorWorkSpace
+                    else:
+                        self.posEfector = {"X":posFinal[0],"Y":posFinal[1],"Z":posFinal[2]}
+                        if self.grabarTrayectoria: self.record += comando
+            else:#es decir si no se le pasa la velocidad
+                comando="G0X" + str(posFinal[0]) + "Y" + str(posFinal[1]) + "Z" + str(posFinal[2]) 
                 self.serial.write(comando)
                 respuesta=self.serial.read() 
                 #verifico si está dentro del espacio de trabajo
@@ -188,7 +199,7 @@ class Controlador:
                 else:
                     self.posEfector = {"X":posFinal[0],"Y":posFinal[1],"Z":posFinal[2]}
                     if self.grabarTrayectoria: self.record += comando
-  
+
                 #respuesta = "INFO: movimiento lineal realizado con exito\nINFO: CURRENT POSITION: " + str(self.posEfector)
         except LimitVelLin as e:
                     return str(e)
@@ -203,33 +214,10 @@ class Controlador:
         #except:
          #   return ("ERROR: no se pudo realizar el movimiento lineal")
         else:
+            #elimino ! de la respuesta lo reemplazo por un espacio
+            respuesta = respuesta.replace("!"," ")
             return respuesta
     
-
-    '''def movimientoLineal(self,posFinal):
-        #verificaciones
-        try:
-            if self.estadoConexion == False:
-                raise ErrorConexion
-            elif self.modoTrabajo == "Automatico":
-                raise ModoInvalido
-            elif self.estadoMotores == False:
-                raise ErrorMotores
-            else:
-                self.serial.write("G0X" + str(posFinal[0]) + "Y" + str(posFinal[1]) + "Z" + str(posFinal[2]))
-                self.posEfector = {"x":posFinal[0],"y":posFinal[1],"z":posFinal[2]}
-                #respuesta=self.serial.read() hay un caracter mal
-                respuesta = "INFO: movimiento lineal realizado con éxito\nINFO: CURRENT POSITION: " + str(self.posEfector)
-        except ErrorConexion as e:
-            return e
-        except ModoInvalido as e:
-            return e
-        except ErrorMotores as e:
-            return e
-        except:
-            return ("ERROR: no se pudo realizar el movimiento lineal")
-        else:
-            return respuesta'''
         
     
     #para el efector hacemos algo similar a los motores
@@ -256,7 +244,8 @@ class Controlador:
         except:
             return ("ERROR: no se pudo activar el efector")
         else:
-            return respuesta
+            return ("INFO: GRIPPER ON")
+            #return respuesta
 
     def desactivarEfector(self):
         try:

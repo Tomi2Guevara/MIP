@@ -7,7 +7,7 @@
 #include <iostream>
 #include <stdlib.h>
 using namespace std;
-#include "libreria/XmlRpc.h"
+#include "XmlRpc.h"
 using namespace XmlRpc;
 
 #include "panel_cliente.h"
@@ -20,6 +20,32 @@ Panel_cliente::Panel_cliente(int id, std::string puerto, std::string IP)
     this->puerto = puerto;
     this->IP = IP;
 }
+
+void Panel_cliente::setID(int id)
+{
+    this->ID = id;
+}
+void Panel_cliente::setPuerto(std::string puerto)
+{
+    this->puerto = puerto;
+}
+void Panel_cliente::setIP(std::string IP)
+{
+    this->IP = IP;
+}
+int Panel_cliente::getID()
+{
+    return this->ID;
+}
+std::string Panel_cliente::getPuerto()
+{
+    return this->puerto;
+}
+std::string Panel_cliente::getIP()
+{
+    return this->IP;
+}
+
 
 void Panel_cliente::do_listCom(XmlRpcClient c)
 {
