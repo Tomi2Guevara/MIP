@@ -68,8 +68,8 @@ class ConsolaCLI(Cmd):
         respuesta = "\n\nDocumented commands (type help <topic>):\n==========================================================================\n"
         respuesta += "conectar      desconectar         motores on|off          modo auto|manual\n"
         respuesta += "getPos        homing              movLineal x y z vel     reporte\n"
-        respuesta += "exit          rpc true|false      gripper on|off          aprendizaje on|off\n"
-        respuesta += "ejecutarTray\n"          
+        respuesta += "exit          ejecutarTray        gripper on|off          aprendizaje on|off\n"
+        respuesta += "block         free                rpc true|false \n"          
         respuesta += "==========================================================================\n"
         if arg2 is not None:
             return (respuesta)
@@ -84,6 +84,8 @@ class ConsolaCLI(Cmd):
                 self.log.add(Orden("CONECTAR ROBOT-ID "+str(ID),time.strftime("%H:%M:%S"),respuesta,"Puerto: COM6\nBaudrate: 115200"))
                 if not("ERROR" in respuesta):
                     self.idAct=ID
+            elif self.idAct=="admin":
+                respuesta = self.ErrorControl   
             else: 
                 respuesta = self.ErrorValidacion
 
@@ -132,6 +134,8 @@ class ConsolaCLI(Cmd):
                     respuesta = self.controlador.activarMotores()
                 elif modo == "off":
                     respuesta = self.controlador.desactivarMotores()       
+            elif self.idAct=="admin":
+                respuesta = self.ErrorControl 
             else: 
                 respuesta = self.ErrorValidacion
 
@@ -155,6 +159,8 @@ class ConsolaCLI(Cmd):
         if ID is not None:
             if ID==self.idAct or self.idAct=="0000":
                 respuesta = self.controlador.cambiarModo(modo)
+            elif self.idAct=="admin":
+                respuesta = self.ErrorControl 
             else:
                 respuesta = self.ErrorValidacion
             
@@ -174,6 +180,8 @@ class ConsolaCLI(Cmd):
         if ID is not None:
             if ID==self.idAct or self.idAct=="0000":
                 respuesta = self.controlador.getCurrentPosition()
+            elif self.idAct=="admin":
+                respuesta = self.ErrorControl 
             else:
                 respuesta = self.ErrorValidacion 
 
@@ -191,6 +199,8 @@ class ConsolaCLI(Cmd):
         if ID is not None:
             if ID==self.idAct or self.idAct=="0000":
                 respuesta = self.controlador.homing()   
+            elif self.idAct=="admin":
+                respuesta = self.ErrorControl 
             else:
                 respuesta = self.ErrorValidacion
 
@@ -217,6 +227,9 @@ class ConsolaCLI(Cmd):
                     posFinal = [float(x),float(y),float(z)]
                     respuesta = self.controlador.movimientoLineal(posFinal)
                     self.log.add(Orden("MOVIMIENTO LINEAL-ID"+str(ID),time.strftime("%H:%M:%S"),respuesta,"Posicion requerida: "+str(posFinal)))
+                return (respuesta)
+            elif self.idAct=="admin":
+                respuesta = self.ErrorControl 
                 return (respuesta)
             else: 
                 respuesta = self.ErrorValidacion
@@ -251,6 +264,8 @@ class ConsolaCLI(Cmd):
                     respuesta = self.controlador.activarEfector()
                 elif modo == "off":
                     respuesta = self.controlador.desactivarEfector()
+            elif self.idAct=="admin":
+                respuesta = self.ErrorControl 
             else:
                 respuesta = self.ErrorValidacion 
             self.log.add(Orden("GRIPPER-ID"+str(ID),time.strftime("%H:%M:%S"),respuesta,"Modo: "+modo))
@@ -305,6 +320,8 @@ class ConsolaCLI(Cmd):
                 print(tray)
                 tray="./trayectorias/"+tray
                 respuesta = self.controlador.ejecutarTrayectoria(str(tray))
+            elif self.idAct=="admin":
+                respuesta = self.ErrorControl 
             else:
                 respuesta = self.ErrorValidacion
             self.log.add(Orden("EJECUTAR TRAYECTORIA-ID"+str(ID),time.strftime("%H:%M:%S"),respuesta,"Nombre del archivo: "+str(tray)))
@@ -355,6 +372,8 @@ class ConsolaCLI(Cmd):
             if ID==self.idAct or self.idAct=="0000":
                 self.idAct="0000"
                 respuesta="INFO: Control liberado"
+            elif self.idAct=="admin":
+                respuesta = self.ErrorControl 
             else:
                 respuesta = self.ErrorValidacion
             self.log.add(Orden("DESCONEXION CLIENTE-ID"+str(ID),time.strftime("%H:%M:%S"),respuesta))
@@ -366,7 +385,7 @@ class ConsolaCLI(Cmd):
             self.log.add(Orden("DESCONEXION CLIENTE-ID admin",time.strftime("%H:%M:%S"),respuesta))
             print(respuesta)
     
-    def do_freeControl(self, args):
+    def do_free(self, args):
         """Libera el control del robot para otro cliente."""
         self.idAct="0000"
         respuesta="INFO: Control liberado"

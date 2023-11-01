@@ -76,12 +76,13 @@ void cl_UI::msjError(std::string metodo) {
 
 int cl_UI::loop(Panel_cliente cli ,XmlRpcClient c) {
     
-    string comando;
+    string comando="";
     int opcion=0;
     string modo;
     string fileName;
     char cont;
     char flag;
+    int e;
 
     ListCom();
 
@@ -89,9 +90,15 @@ int cl_UI::loop(Panel_cliente cli ,XmlRpcClient c) {
 
         //muestro un promt >> 
         std::cout << ">> ";
-        std::cin >> comando;
+
+        
+        std::getline(cin, comando);
+        if (comando == "")
+            std::getline(cin, comando);
+        
 
         opcion = decode(comando);
+       
 
         switch (opcion)
         {
@@ -136,7 +143,7 @@ int cl_UI::loop(Panel_cliente cli ,XmlRpcClient c) {
             if (flag == 's'){
                 std::cout << "Ingrese v: ";
                 std::cin >> v;
-                cli.do_movLineal(c, x, y, z);
+                cli.do_movLineal(c, x, y, z, v);
             }
             else
                 cli.do_movLineal(c, x, y, z);
@@ -229,7 +236,6 @@ int cl_UI::decode(string s)
   //si las primeras letras son help entonces 18
   if(s[0]=='h' && s[1]=='e' && s[2]=='l' && s[3]=='p')
     return 18;
-  return 0;
 }
 
  string cl_UI::helpCommand(string comando){

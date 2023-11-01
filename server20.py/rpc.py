@@ -17,6 +17,7 @@ class XRServer(object):
                 self.server = SimpleXMLRPCServer(("localhost", used_port),
                                                  allow_none = True,
                                                  logRequests = None) 
+                #remplazar localhost por la ip del servidor
                 if used_port != port:
                     logging.warning(("RPC server bound on non-default port %d") % used_port)
                 break
