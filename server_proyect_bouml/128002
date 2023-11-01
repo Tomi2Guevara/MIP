@@ -1,7 +1,7 @@
 format 224
 "Server" // Server
-  revision 7
-  modified_by 2 "enzot"
+  revision 8
+  modified_by 2 "tguev"
   // class settings
   
   classdiagramsettings member_max_width 0 end
@@ -454,7 +454,6 @@ ${docstring}${body}
 	    classrelation_ref 137986 // <dependency>
 	  b parent class_ref 135554 // Exception
       end
-
     end
 
     class 128130 "SeriaPort"
@@ -1320,5 +1319,6 @@ ${docstring}${members}
 	  b parent class_ref 135170 // Orden
       end
     end
+
   end
 end
