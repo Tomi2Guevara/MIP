@@ -19,6 +19,11 @@ void cl_UI::setCliente(Panel_cliente* cliente) {
     this->cli = cliente;
 }
 
+/**
+ * @brief This function displays a welcome message and prompts the user to enter their ID.
+ * 
+ * @return int The ID entered by the user.
+ */
 int cl_UI::inicio(){
     int ID;
     std::cout << "\n==========================================================================\n";
@@ -28,6 +33,15 @@ int cl_UI::inicio(){
     return ID;    
 }
 
+/**
+ * @brief Lists the available commands for the user to interact with the system.
+ * 
+ * This function displays a list of documented commands that the user can use to interact with the system.
+ * The list includes commands for connecting and disconnecting, controlling motors, getting position information,
+ * homing, moving linearly, reporting, controlling the gripper, enabling/disabling learning mode, and executing trajectories.
+ * 
+ * @return void
+ */
 void cl_UI::ListCom() {
     
     stringstream ss;
@@ -42,6 +56,10 @@ void cl_UI::ListCom() {
 }
 
 
+/**
+ * @brief Displays the client's connection data on the console.
+ * 
+ */
 void cl_UI::mostrarDatosCliente() {
     stringstream ss;
     ss << "\n-------CONEXION ESTABLECIDA-------\n";
@@ -52,6 +70,15 @@ void cl_UI::mostrarDatosCliente() {
     std::cout<<ss.str();
 }
 
+/**
+ * @brief This function allows the user to change the data of a client.
+ * 
+ * @details The function prompts the user to input the new ID, port and IP address of the client.
+ * Then, it sets the new values using the corresponding setters of the client object.
+ * 
+ * @param None.
+ * @return None.
+ */
 void cl_UI::cambiarDatosCliente() {
     int id, ip;
     std::string nombrePanel, puerto;
@@ -69,11 +96,23 @@ void cl_UI::cambiarDatosCliente() {
     cli->setID(ip);
 }
 
+/**
+ * Displays an error message indicating that a method failed to execute.
+ * @param metodo The name of the method that failed to execute.
+ */
 void cl_UI::msjError(std::string metodo) {
     std::cout << "Error al ejecutar " << metodo << std::endl;
 }
 
 
+/**
+ * @brief This function represents the main loop of the user interface. It displays a prompt and waits for user input, 
+ * then executes the corresponding command. The loop continues until the user enters the "exit" command.
+ * 
+ * @param cli The Panel_cliente object used to interact with the robot.
+ * @param c The XmlRpcClient object used to communicate with the server.
+ * @return int Returns 0 when the loop is finished.
+ */
 int cl_UI::loop(Panel_cliente cli ,XmlRpcClient c) {
     
     string comando;
@@ -195,6 +234,13 @@ int cl_UI::loop(Panel_cliente cli ,XmlRpcClient c) {
     return 0;
 }
 
+/**
+ * @brief Decodes a string command and returns an integer code.
+ * 
+ * @param s The string command to decode.
+ * @return An integer code representing the decoded command. Returns 20 if the command is not recognized.
+ *         Returns 18 if the command starts with "help". Returns a specific code for each recognized command.
+ */
 int cl_UI::decode(string s)
 {
   if (s == "conectar")
@@ -237,7 +283,14 @@ int cl_UI::decode(string s)
   return 20;
 }
 
- string cl_UI::helpCommand(string comando){
+/**
+ * @brief Returns a help message for a given command.
+ * 
+ * @param comando The command to get help for.
+ * @return A string with the help message for the given command.
+ *         If the command is not recognized, returns "Comando no reconocido".
+ */
+string cl_UI::helpCommand(string comando){
   stringstream ss;
   if(comando=="conectar"){
     ss << "conectar: conecta el cliente al servidor\n";
