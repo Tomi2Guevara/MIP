@@ -5,15 +5,14 @@ using namespace std;
 #include "panel_cliente.h"
 #include <exception>
 
-cl_UI::cl_UI() {  
-    
+cl_UI::cl_UI() {      
 }
 
 void cl_UI::setCliente(Panel_cliente* cliente) {
     this->cliente = cliente;
 }
 
-int inicio(){
+int cl_UI::inicio(){
     int ID;
     std::cout << "Bienvenido al panel de control del robot" << std::endl;
     std::cout << "Ingrese su ID: "<< std::endl;
@@ -145,10 +144,14 @@ void cl_UI::case12B(string* fileName) {
     std::cin >> *fileName;    
 }
 
+void cl_UI::case13() {
+    std::cout << "motores desactivados...";    
+}
+
 void cl_UI::case14() {
     std::cout << "Saliendo del programa..." << std::endl;
 }
-void defelctCase() {
+void cl_UI::defaultCase() {
     std::cout << "Opcion incorrecta, ingrese un numero del 1 al 14" << std::endl;
 }
 

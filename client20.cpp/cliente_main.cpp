@@ -85,8 +85,7 @@ int main(int argc, char* argv[]){
                         cli.do_reporte(c);
                         break;
                     case 10:
-                        std::cout << "Ingrese el modo on|off: ";
-                        std::cin >> modo;
+                        ui.case10(&modo);
                         cli.do_gripper(c, modo);
                         break;
                     case 11:
@@ -120,7 +119,7 @@ int main(int argc, char* argv[]){
                     }
                 ui.acciones(&opcion);                        
                 
-            } while (opcion != 13);
+            } while (opcion != 14);
             
     
             
