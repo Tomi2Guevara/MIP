@@ -1,12 +1,8 @@
 
 #include <iostream>
 #include <string>
-#include <exception>
-#include <sstream>
-#include <unistd.h>
-#include <limits>
-#include <vector>
 using namespace std;
+#include <sstream>
 #include "cl_UI.h"
 #include "panel_cliente.h"
 

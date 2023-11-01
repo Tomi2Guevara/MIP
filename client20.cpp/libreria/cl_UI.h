@@ -1,7 +1,7 @@
 // Purpose: Header file for cl_UI.cpp
 #include <string>
 #include "panel_cliente.h"
-#include <exception> 
+
 
 class cl_UI {
 private:
