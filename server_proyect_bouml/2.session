@@ -1,13 +1,17 @@
-window_sizes 1920 991 479 1435 809 128
+window_sizes 1920 991 450 1464 809 128
 
 diagrams
   classdiagram_ref 128002 // diag_1
-    1358 765 97 A4 204 0
-  active  classdiagram_ref 134530 // diagrama
-    1435 809 180 A4 36 0
+    1385 1418 68 A4 0 0
+  classdiagram_ref 134530 // diagrama
+    1171 647 100 A4 0 0
+  classdiagram_ref 141186 // diag4
+    114 98 100 A4 0 0
+  active  classdiagram_ref 141314 // diag5
+    1464 809 100 A4 3 0
 end
 show_stereotypes
-selected classdiagram_ref 134530 // diagrama
+selected classdiagram_ref 141186 // diag4
 open
   attribute_ref 128514 // estadoConexion
   attribute_ref 128770 // estadoMotores
@@ -35,8 +39,7 @@ open
   class_ref 135682 // ErrorConexion
   class_ref 135810 // ModoInvalido
   class_ref 135938 // ErrorMotores
-  class_ref 155778 // cliente_main
-  class_ref 155906 // Panel_cliente
-  class_ref 156034 // Cl_UI
+  classview_ref 134530 // vista_cliente
+  classview_ref 141058 // vista ppal
 end
 end

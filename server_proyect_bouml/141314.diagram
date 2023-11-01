@@ -1,0 +1,158 @@
+format 224
+
+classcanvas 128002 class_ref 128002 // Controlador
+  classdiagramsettings show_members_full_definition yes show_members_visibility yes show_members_initialization yes member_max_width 0 end
+  xyz 479.48 225.18 2000
+end
+classcanvas 128130 class_ref 128130 // SeriaPort
+  classdiagramsettings show_members_full_definition yes member_max_width 0 end
+  xyz 605.96 73.48 2000
+end
+classcanvas 128386 class_ref 128258 // ConsolaCLI
+  classdiagramsettings show_members_full_definition yes show_members_initialization yes member_max_width 0 end
+  xyz 254.5 264.68 2000
+end
+classcanvas 128514 class_ref 128386 // Cmd
+  classdiagramsettings member_max_width 0 end
+  xyz 511.32 117.48 2000
+end
+classcanvas 128770 class_ref 128514 // XRServer
+  classdiagramsettings show_members_full_definition yes show_members_initialization yes member_max_width 0 end
+  xyz 239.66 88.42 2005
+end
+classcanvas 129282 class_ref 135042 // Reporte
+  classdiagramsettings member_max_width 0 end
+  xyzwh 279.02 590.24 2005 108 65
+end
+classcanvas 129538 class_ref 135170 // Orden
+  classdiagramsettings member_max_width 0 end
+  xyzwh 40.64 365.24 2000 133 173
+end
+classcanvas 130434 class_ref 135426 // SimpleXMLRPCServer
+  classdiagramsettings member_max_width 0 end
+  xyz 28.76 83.6 2010
+end
+classcanvas 130946 class_ref 135554 // Exception
+  classdiagramsettings member_max_width 0 end
+  xyzwh 573.28 790.44 2000 129 41
+end
+classcanvas 132226 class_ref 135810 // ModoInvalido
+  classdiagramsettings member_max_width 0 end
+  xyz 502 890.9 2000
+end
+classcanvas 132354 class_ref 135938 // ErrorMotores
+  classdiagramsettings member_max_width 0 end
+  xyz 628.8 888.6 2000
+end
+classcanvas 132738 class_ref 135682 // ErrorConexion
+  classdiagramsettings member_max_width 0 end
+  xyz 358.2 872.6 2000
+end
+classcanvas 133122 class_ref 136066 // limitVelLin
+  classdiagramsettings member_max_width 0 end
+  xyz 756.36 863.8 2000
+end
+classcanvas 135426 class_ref 142594 // mainServer
+  classdiagramsettings member_max_width 0 end
+  xyz 289.48 11.54 2000
+end
+classcanvas 135682 class_ref 149122 // DataLogger
+  classdiagramsettings member_max_width 0 end
+  xyz 57.78 671.94 2000
+end
+relationcanvas 128258 relation_ref 128002 // <aggregation>
+  decenter_begin 574
+  from ref 128002 z 2001 to ref 128130
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 128642 relation_ref 128130 // <generalisation>
+  from ref 128386 z 2001 to ref 128514
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129154 relation_ref 128514 // <aggregation>
+  from ref 128386 z 2001 to ref 128002
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129410 relation_ref 135042 // <dependency>
+  from ref 128386 z 2006 to ref 129282
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129794 relation_ref 135298 // <aggregation>
+  from ref 128386 z 2001 to ref 129538
+  no_role_a no_role_b
+  multiplicity_a_pos 184 429 3000 multiplicity_b_pos 229 404 3000
+end
+relationcanvas 130818 relation_ref 135938 // <aggregation>
+  from ref 128770 z 2011 to ref 130434
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 132610 relation_ref 136194 // <generalisation>
+  decenter_end 388
+  from ref 132226 z 2001 to ref 130946
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 132866 relation_ref 136066 // <generalisation>
+  decenter_end 123
+  from ref 132738 z 2001 to ref 130946
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 133250 relation_ref 136450 // <generalisation>
+  from ref 133122 z 2001 to ref 130946
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 133634 relation_ref 136322 // <generalisation>
+  from ref 132354 z 2001 to ref 130946
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 135170 relation_ref 136834 // <dependency>
+  from ref 128002 z 2001 to ref 130946
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 135298 relation_ref 143362 // <dependency>
+  from ref 129282 z 2006 to ref 128002
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 135554 relation_ref 143490 // <realization>
+  from ref 135426 z 2006 to ref 128770
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 135810 relation_ref 150018 // <dependency>
+  from ref 135682 z 2001 to ref 129538
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 135938 relation_ref 150146 // <dependency>
+  from ref 128386 z 2001 to ref 135682
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 136066 relation_ref 150274 // <directional aggregation>
+  from ref 128386 z 2006 to ref 128770
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 136194 relation_ref 150402 // <dependency>
+  decenter_begin 298
+  decenter_end 275
+  from ref 128770 z 2006 to ref 128386
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 136322 relation_ref 150530 // <dependency>
+  from ref 129282 z 2006 to ref 135682
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+end
