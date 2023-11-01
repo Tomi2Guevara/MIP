@@ -1,0 +1,1324 @@
+format 224
+"Server" // Server
+  revision 7
+  modified_by 2 "enzot"
+  // class settings
+  
+  classdiagramsettings member_max_width 0 end
+  
+  classcompositediagramsettings end
+  
+  usecasediagramsettings end
+  
+  sequencediagramsettings end
+  
+  collaborationdiagramsettings end
+  
+  objectdiagramsettings end
+  
+  objectcompositediagramsettings end
+  
+  componentdiagramsettings
+   end
+  
+  deploymentdiagramsettings
+   end
+  
+  statediagramsettings
+   end
+  
+  activitydiagramsettings
+   end
+  
+  classview 128002 "vista_ppal"
+    
+    classdiagramsettings member_max_width 0 end
+    
+    classcompositediagramsettings end
+    
+    collaborationdiagramsettings end
+    
+    objectdiagramsettings end
+    
+    objectcompositediagramsettings end
+    
+    sequencediagramsettings end
+    
+    statediagramsettings
+     end
+    
+    
+    activitydiagramsettings
+     end
+    classdiagram 128002 "diag_1"
+      classdiagramsettings draw_all_relations no member_max_width 0 end
+      size A4
+    end
+
+    class 128002 "Controlador"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl "class ${name}${inherit}:
+${docstring}${members}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      attribute 128002 "efectorFinal"
+	private explicit_type "string"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 128130 "dimensiones"
+	private explicit_type "diccionario"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 128258 "velLinMax"
+	private explicit_type "float"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 128514 "estadoConexion"
+	private explicit_type "string"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 128770 "estadoMotores"
+	private explicit_type "string"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 143490 "estadoEfector"
+	private explicit_type "bool"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 128898 "modoTrabajo"
+	private explicit_type "string"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 128642 "posEfector"
+	private explicit_type "float"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 143746 "fechaConexion"
+	private explicit_type "string"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 143618 "horaConexion"
+	private explicit_type "string"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 143874 "grabarTrayectoria"
+	private explicit_type "bool"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 144002 "record"
+	private explicit_type "string"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 136578 "serial"
+	private type class_ref 128130 // SeriaPort
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 145282 "getEstadoConexion"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 145410 "getEstadoMotores"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 145538 "getHoraConexion"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 145666 "getFechaConexion"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 128002 "conectar"
+	public explicit_return_type "string"
+	nparams 2
+	  param in name "port" explicit_type "string"
+	  param in name "baudrate" explicit_type "int"
+	
+	
+	
+	python_def "${@}${static}${abstract}def ${name}${(}${p0}${v0}, ${p1}${v1}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 128130 "desconectar"
+	public explicit_return_type "string"
+	nparams 0
+	
+	
+	
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 128514 "cambiarModo"
+	public explicit_return_type "string"
+	nparams 1
+	  param in name "modo" explicit_type "string"
+	
+	
+	
+	python_def "${@}${static}${abstract}def ${name}${(}${p0}${v0}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 128258 "activarMotores"
+	public explicit_return_type "string"
+	nparams 0
+	
+	
+	
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 128386 "desactivarMotores"
+	public explicit_return_type "string"
+	nparams 0
+	
+	
+	
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 129026 "homing"
+	public explicit_return_type "string"
+	nparams 0
+	
+	
+	
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 128642 "movLineal"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "posFinal" explicit_type "double"
+	  param in name "velocidad" explicit_type "double"
+	
+	
+	
+	python_def "${@}${static}${abstract}def ${name}${(}${p0}${v0}, ${p1}${v1}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 129154 "movLineal"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "posFinal" explicit_type "double"
+	
+	
+	
+	python_def "${@}${static}${abstract}def ${name}${(}${p0}${v0}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 128770 "activarEfector"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 129410 "desactivarEfector"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 145794 "aprenderTrayectoria"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "fileName" explicit_type "string"
+	
+	
+	
+	python_def "${@}${static}${abstract}def ${name}${(}${p0}${v0}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 129282 "ejecutarTrayectoria"
+	public explicit_return_type "string"
+	nparams 1
+	  param in name "fileName" explicit_type "string"
+	
+	
+	
+	python_def "${@}${static}${abstract}def ${name}${(}${p0}${v0}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      classrelation 128002 // <aggregation>
+	relation 128002 o---
+	  a role_name "" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 128002 // <aggregation>
+	  b role_name "" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 128130 // <aggregation>
+      end
+
+      classrelation 129026 // <aggregation>
+	relation_ref 128514 // <aggregation>
+      end
+
+      classrelation 137858 // <realization>
+	relation 136706 -_-|>
+	  a public
+	    python "${type}"
+	    classrelation_ref 137858 // <realization>
+	  b parent class_ref 135554 // Exception
+      end
+
+      classrelation 137986 // <dependency>
+	relation 136834 -_->
+	  a public
+	    python "${type}"
+	    classrelation_ref 137986 // <dependency>
+	  b parent class_ref 135554 // Exception
+      end
+
+    end
+
+    class 128130 "SeriaPort"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl "class ${name}${inherit}:
+${docstring}${members}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 128130 // <aggregation>
+	relation_ref 128002 // <aggregation>
+      end
+
+      operation 138114 "SerialPort"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "port" explicit_type "string"
+	  param in name "baud" explicit_type "int"
+	
+	
+	
+	python_def "${@}${static}${abstract}def ${name}${(}${p0}${v0}, ${p1}${v1}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 137730 "read"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 137858 "write"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "mensaje" explicit_type "string"
+	
+	
+	
+	python_def "${@}${static}${abstract}def ${name}${(}${p0}${v0}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 137986 "close"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      attribute 144258 "ser"
+	private explicit_type "Serial"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+    end
+
+    class 128258 "ConsolaCLI"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl "class ${name}${inherit}:
+${docstring}${members}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 128258 // <generalisation>
+	relation 128130 ---|>
+	  a public
+	    python "${type}"
+	    classrelation_ref 128258 // <generalisation>
+	  b parent class_ref 128386 // Cmd
+      end
+
+      classrelation 128514 // <aggregation>
+	relation_ref 128258 // <aggregation>
+      end
+
+      classrelation 128642 // <aggregation>
+	relation 128386 o---
+	  a role_name "" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 128642 // <aggregation>
+	  b role_name "" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 128770 // <aggregation>
+      end
+
+      classrelation 128898 // <aggregation>
+	relation 128514 o---
+	  a role_name "" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 128898 // <aggregation>
+	  b role_name "" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 129026 // <aggregation>
+      end
+
+      attribute 135682 "controlador"
+	private type class_ref 128002 // Controlador
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 135938 "postcmd"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 136066 "do_conectar"
+	public explicit_return_type "string"
+	nparams 0
+	
+	
+	
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 136194 "do_desconectar"
+	public explicit_return_type "string"
+	nparams 0
+	
+	
+	
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 136322 "do_motores"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 136450 "do_modo"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 136578 "do_homing"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 136706 "do_getPos"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 136834 "do_movLin"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 136962 "do_gripper"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      classrelation 135554 // <dependency>
+	relation 135042 -_->
+	  a public
+	    python "${type}"
+	    classrelation_ref 135554 // <dependency>
+	  b parent class_ref 135042 // Reporte
+      end
+
+      attribute 135810 "ordenes"
+	private type class_ref 135170 // Orden
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 135810 // <aggregation>
+	relation_ref 135170 // <aggregation>
+      end
+
+      classrelation 135938 // <aggregation>
+	relation 135298 o---
+	  a role_name "" multiplicity "*" private
+	    python "${comment}${self}${name} = ${stereotype}()
+"
+	    classrelation_ref 135938 // <aggregation>
+	  b role_name "" multiplicity "1" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 136066 // <aggregation>
+      end
+
+      classrelation 136578 // <aggregation>
+	relation_ref 135682 // <aggregation>
+      end
+
+      classrelation 136706 // <aggregation>
+	relation 135810 o---
+	  a role_name "" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 136706 // <aggregation>
+	  b role_name "" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 136834 // <aggregation>
+      end
+
+      classrelation 151298 // <dependency>
+	relation 150146 -_->
+	  a public
+	    python "${type}"
+	    classrelation_ref 151298 // <dependency>
+	  b parent class_ref 149122 // DataLogger
+      end
+
+      classrelation 151426 // <directional aggregation>
+	relation 150274 o-->
+	  a role_name "" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 151426 // <directional aggregation>
+	  b parent class_ref 128514 // XRServer
+      end
+    end
+
+    class 128386 "Cmd"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl "class ${name}${inherit}:
+${docstring}${members}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 128514 "XRServer"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl "class ${name}${inherit}:
+${docstring}${members}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 128386 // <aggregation>
+	relation 128258 o---
+	  a role_name "" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 128386 // <aggregation>
+	  b role_name "" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 128514 // <aggregation>
+      end
+
+      classrelation 128770 // <aggregation>
+	relation_ref 128386 // <aggregation>
+      end
+
+      attribute 135554 "Server"
+	private type class_ref 135426 // SimpleXMLRPCServer
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 136450 // <aggregation>
+	relation 135682 o---
+	  a role_name "" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 136450 // <aggregation>
+	  b role_name "" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 136578 // <aggregation>
+      end
+
+      classrelation 136834 // <aggregation>
+	relation_ref 135810 // <aggregation>
+      end
+
+      classrelation 136962 // <aggregation>
+	relation 135938 o---
+	  a role_name "" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 136962 // <aggregation>
+	  b role_name "" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 137090 // <aggregation>
+      end
+
+      attribute 136962 "port"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 138626 "run_server"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 138754 "shutdown"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      classrelation 151554 // <dependency>
+	relation 150402 -_->
+	  a public
+	    python "${type}"
+	    classrelation_ref 151554 // <dependency>
+	  b parent class_ref 128258 // ConsolaCLI
+      end
+    end
+
+    class 135042 "Reporte"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl "class ${name}${inherit}:
+${docstring}${members}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      attribute 135938 "controlador"
+	private type class_ref 128002 // Controlador
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 137090 "crearReporte"
+	public explicit_return_type "string"
+	nparams 1
+	  param in name "listaOrdenes" explicit_type "Orden []"
+	
+	
+	
+	python_def "${@}${static}${abstract}def ${name}${(}${p0}${v0}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      classrelation 136322 // <dependency>
+	relation 135554 -_->
+	  a public
+	    python "${type}"
+	    classrelation_ref 136322 // <dependency>
+	  b parent class_ref 135170 // Orden
+      end
+
+      classrelation 144514 // <dependency>
+	relation 143362 -_->
+	  a public
+	    python "${type}"
+	    classrelation_ref 144514 // <dependency>
+	  b parent class_ref 128002 // Controlador
+      end
+
+      classrelation 151682 // <dependency>
+	relation 150530 -_->
+	  a public
+	    python "${type}"
+	    classrelation_ref 151682 // <dependency>
+	  b parent class_ref 149122 // DataLogger
+      end
+    end
+
+    class 135170 "Orden"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl "class ${name}${inherit}:
+${docstring}${members}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 135682 // <aggregation>
+	relation 135170 o---
+	  a role_name "" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 135682 // <aggregation>
+	  b role_name "" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 135810 // <aggregation>
+      end
+
+      classrelation 136066 // <aggregation>
+	relation_ref 135298 // <aggregation>
+      end
+
+      attribute 136066 "nombre"
+	private explicit_type "string"
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 136194 "hora"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 136322 "especificaciones"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 136450 "resultado"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 137218 "getNombre"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 137346 "getHora"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 137474 "getEspecificaciones"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 137602 "getResultado"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      classrelation 136194 // <dependency>
+	relation 135426 -_->
+	  a public
+	    python "${type}"
+	    classrelation_ref 136194 // <dependency>
+	  b parent class_ref 135042 // Reporte
+      end
+    end
+
+    class 135426 "SimpleXMLRPCServer"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl "class ${name}${inherit}:
+${docstring}${members}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      attribute 136706 "IP"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 136834 "Port"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl ""
+	php_decl ""
+	python_decl "${comment}${self}${name} = ${value}
+"
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 138242 "register_function"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 138370 "server_forever"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      operation 138498 "shutdown"
+	public explicit_return_type ""
+	nparams 0
+	
+	
+	
+	python_def "${@}${static}${abstract}def ${name}${(}${)}:
+${docstring}${body}
+"
+	
+      end
+
+      classrelation 137090 // <aggregation>
+	relation_ref 135938 // <aggregation>
+      end
+    end
+
+    class 135554 "Exception"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl "class ${name}${inherit}:
+${docstring}${members}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 137730 // <dependency>
+	relation 136578 -_->
+	  a public
+	    python "${type}"
+	    classrelation_ref 137730 // <dependency>
+	  b parent class_ref 135554 // Exception
+      end
+    end
+
+    class 135682 "ErrorConexion"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl "class ${name}${inherit}:
+${docstring}${members}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 137218 // <generalisation>
+	relation 136066 ---|>
+	  a public
+	    python "${type}"
+	    classrelation_ref 137218 // <generalisation>
+	  b parent class_ref 135554 // Exception
+      end
+    end
+
+    class 135810 "ModoInvalido"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl "class ${name}${inherit}:
+${docstring}${members}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 137346 // <generalisation>
+	relation 136194 ---|>
+	  a public
+	    python "${type}"
+	    classrelation_ref 137346 // <generalisation>
+	  b parent class_ref 135554 // Exception
+      end
+    end
+
+    class 135938 "ErrorMotores"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl "class ${name}${inherit}:
+${docstring}${members}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 137474 // <generalisation>
+	relation 136322 ---|>
+	  a public
+	    python "${type}"
+	    classrelation_ref 137474 // <generalisation>
+	  b parent class_ref 135554 // Exception
+      end
+    end
+
+    class 136066 "limitVelLin"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl "class ${name}${inherit}:
+${docstring}${members}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 137602 // <generalisation>
+	relation 136450 ---|>
+	  a public
+	    python "${type}"
+	    classrelation_ref 137602 // <generalisation>
+	  b parent class_ref 135554 // Exception
+      end
+    end
+
+    class 142594 "mainServer"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl "class ${name}${inherit}:
+${docstring}${members}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 144642 // <realization>
+	relation 143490 -_-|>
+	  a public
+	    python "${type}"
+	    classrelation_ref 144642 // <realization>
+	  b parent class_ref 128514 // XRServer
+      end
+    end
+
+    class 149122 "DataLogger"
+      visibility package 
+      cpp_decl ""
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl "class ${name}${inherit}:
+${docstring}${members}
+"
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      classrelation 151170 // <dependency>
+	relation 150018 -_->
+	  a public
+	    python "${type}"
+	    classrelation_ref 151170 // <dependency>
+	  b parent class_ref 135170 // Orden
+      end
+    end
+  end
+end

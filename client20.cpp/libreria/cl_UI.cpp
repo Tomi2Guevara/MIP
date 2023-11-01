@@ -85,11 +85,10 @@ int cl_UI::loop(Panel_cliente cli ,XmlRpcClient c) {
 
     ListCom();
 
-    do
-    {
+    while (opcion != 17){
         // Limpia el búfer de entrada
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        // cin.clear();
+        // cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
         //muestro un promt >> 
         std::cout << ">> ";
@@ -188,7 +187,7 @@ int cl_UI::loop(Panel_cliente cli ,XmlRpcClient c) {
             std::cout << "Comando no reconocido\n";
             break;
         }
-    } while (opcion != 17);
+  } 
     
     char salida;
     std::cout << "Ingrese cualquier caracter para salir...";

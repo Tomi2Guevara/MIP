@@ -3,3 +3,139 @@ Hora de ejecucion: 09:26:39
 Servidor RPC iniciado en el puerto: ('127.0.0.1', 8891)
 ---------------------------------------------------------------
 
+----------------CONECTAR ROBOT-ID 1234-----------------
+Hora de ejecucion: 09:30:48
+Especificaciones: Puerto: COM6
+Baudrate: 115200
+ERROR: no se pudo conectar el robot
+---------------------------------------------------------------
+
+----------------CONECTAR ROBOT-ID 1234-----------------
+Hora de ejecucion: 09:30:48
+Especificaciones: Puerto: COM6
+Baudrate: 115200
+ERROR: no se pudo conectar el robot
+---------------------------------------------------------------
+
+----------------CONECTAR ROBOT-ID 1234-----------------
+Hora de ejecucion: 09:31:00
+Especificaciones: Puerto: COM6
+Baudrate: 115200
+ERROR: no se pudo conectar el robot
+---------------------------------------------------------------
+
+----------------CONECTAR ROBOT-ID 1234-----------------
+Hora de ejecucion: 09:31:00
+Especificaciones: Puerto: COM6
+Baudrate: 115200
+ERROR: no se pudo conectar el robot
+---------------------------------------------------------------
+
+----------------CONECTAR ROBOT-ID 1234-----------------
+Hora de ejecucion: 09:34:42
+Especificaciones: Puerto: COM6
+Baudrate: 115200
+ERROR: no se pudo conectar el robot
+---------------------------------------------------------------
+
+----------------CONECTAR ROBOT-ID 1234-----------------
+Hora de ejecucion: 09:34:42
+Especificaciones: Puerto: COM6
+Baudrate: 115200
+ERROR: no se pudo conectar el robot
+---------------------------------------------------------------
+
+----------------DESCONECTAR ROBOT-ID 1234-----------------
+Hora de ejecucion: 09:36:06
+ERROR: el robot ya esta desconectado
+---------------------------------------------------------------
+
+----------------DESCONEXION CLIENTE-ID1234-----------------
+Hora de ejecucion: 09:36:06
+INFO: Control liberado
+---------------------------------------------------------------
+
+----------------CONECTAR ROBOT-ID 1234-----------------
+Hora de ejecucion: 09:36:20
+Especificaciones: Puerto: COM6
+Baudrate: 115200
+ERROR: no se pudo conectar el robot
+---------------------------------------------------------------
+
+----------------CONECTAR ROBOT-ID 1234-----------------
+Hora de ejecucion: 09:36:20
+Especificaciones: Puerto: COM6
+Baudrate: 115200
+ERROR: no se pudo conectar el robot
+---------------------------------------------------------------
+
+----------------DESCONECTAR ROBOT-ID 1234-----------------
+Hora de ejecucion: 09:36:35
+ERROR: el robot ya esta desconectado
+---------------------------------------------------------------
+
+----------------DESCONECTAR ROBOT-ID 1234-----------------
+Hora de ejecucion: 09:37:27
+ERROR: el robot ya esta desconectado
+---------------------------------------------------------------
+
+----------------DESCONEXION CLIENTE-ID1234-----------------
+Hora de ejecucion: 09:37:27
+INFO: Control liberado
+---------------------------------------------------------------
+
+----------------CONECTAR ROBOT-ID 1232-----------------
+Hora de ejecucion: 09:37:43
+Especificaciones: Puerto: COM6
+Baudrate: 115200
+ERROR: no se pudo conectar el robot
+---------------------------------------------------------------
+
+----------------CONECTAR ROBOT-ID 1232-----------------
+Hora de ejecucion: 09:37:43
+Especificaciones: Puerto: COM6
+Baudrate: 115200
+ERROR: no se pudo conectar el robot
+---------------------------------------------------------------
+
+----------------GET POSITION-ID 1232-----------------
+Hora de ejecucion: 09:37:49
+ERROR: el robot no esta conectado
+---------------------------------------------------------------
+
+----------------MOVIMIENTO LINEAL-ID1232-----------------
+Hora de ejecucion: 09:38:01
+Especificaciones: Posicion requerida: [120.0, 170.0, 120.0]
+ERROR: el robot no esta conectado
+---------------------------------------------------------------
+
+----------------DESCONECTAR ROBOT-ID 1232-----------------
+Hora de ejecucion: 09:40:03
+ERROR: el robot ya esta desconectado
+---------------------------------------------------------------
+
+----------------DESCONEXION CLIENTE-ID1232-----------------
+Hora de ejecucion: 09:40:03
+INFO: Control liberado
+---------------------------------------------------------------
+
+----------------DESCONECTAR ROBOT-ID 123-----------------
+Hora de ejecucion: 09:42:28
+ERROR: el robot ya esta desconectado
+---------------------------------------------------------------
+
+----------------DESCONEXION CLIENTE-ID123-----------------
+Hora de ejecucion: 09:42:28
+INFO: Control liberado
+---------------------------------------------------------------
+
+----------------DESCONECTAR ROBOT-ID 1234-----------------
+Hora de ejecucion: 09:42:43
+ERROR: el robot ya esta desconectado
+---------------------------------------------------------------
+
+----------------DESCONEXION CLIENTE-ID1234-----------------
+Hora de ejecucion: 09:42:43
+INFO: Control liberado
+---------------------------------------------------------------
+

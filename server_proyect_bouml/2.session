@@ -1,0 +1,37 @@
+window_sizes 1920 991 450 1464 809 128
+
+diagrams
+  active  classdiagram_ref 128002 // diag_1
+    1358 765 78 A4 14 0
+end
+show_stereotypes
+selected operation_ref 137858 // write
+open
+  attribute_ref 128514 // estadoConexion
+  attribute_ref 128770 // estadoMotores
+  attribute_ref 128898 // modoTrabajo
+  attribute_ref 128642 // posEfector
+  attribute_ref 143618 // horaConexion
+  attribute_ref 143874 // grabarTrayectoria
+  attribute_ref 136578 // serial
+  operation_ref 145282 // getEstadoConexion
+  operation_ref 145410 // getEstadoMotores
+  operation_ref 128130 // desconectar
+  operation_ref 128514 // cambiarModo
+  operation_ref 128258 // activarMotores
+  operation_ref 129026 // homing
+  operation_ref 129154 // movLineal
+  operation_ref 128770 // activarEfector
+  operation_ref 129410 // desactivarEfector
+  classrelation_ref 137986 // <dependency>
+  operation_ref 137986 // close
+  class_ref 128258 // ConsolaCLI
+  class_ref 128514 // XRServer
+  class_ref 135042 // Reporte
+  class_ref 135170 // Orden
+  class_ref 135426 // SimpleXMLRPCServer
+  class_ref 135682 // ErrorConexion
+  class_ref 135810 // ModoInvalido
+  class_ref 135938 // ErrorMotores
+end
+end
