@@ -3,7 +3,7 @@
 //
 #include <string>
 using namespace std;
-#include "libreria/XmlRpc.h"
+#include "XmlRpc.h"
 using namespace XmlRpc;
 #ifndef INTPROYECT_PANEL_CLIENTE_H
 #define INTPROYECT_PANEL_CLIENTE_H

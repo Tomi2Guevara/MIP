@@ -18,7 +18,7 @@ class SerialPort:
         """
             
         # Configura el puerto serie
-        self.ser = serial.Serial(port, baudrate)  # Cambia 'COM3' al puerto correcto
+        self.ser = serial.Serial(port, baudrate)  #se crea el objeto serie de pyserial 
         self.ser.flushInput() #borra el buffer de entrada
         self.ser.flushOutput() #borra el buffer de salida
 
@@ -84,10 +84,6 @@ class SerialPort:
             try:
                 self.ser.close()
             except Exception as e:
-<<<<<<<< HEAD:servidor/serial_port.py
-                return "Error al cerrar el puerto serie:" + str(e)
-    
-========
                 return "ERROR: al cerrar el puerto serie:" + str(e)
     
 '''   def initialize(self):
@@ -103,4 +99,3 @@ class SerialPort:
             except Exception as e:
                 return "Error al inicializar el robot:" + str(e)
 '''               
->>>>>>>> 1760a0ebe749979b3af33cd4bb0e3230d2123425:server20.py/serial_port.py
