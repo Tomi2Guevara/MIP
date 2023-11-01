@@ -3,7 +3,7 @@ se lanza desde main_test.py
 es necesario ejecutar "rcp true" para conectar un cliente
 
 INSTRUCCIONES CLIENTE
-Archivo que importa es el hola_client.cpp dentro de carper /libreria
+Archivo que importa es el hola_client.cpp dentro de carpeta /libreria
 Para compilar PS C:\Users\enzot\Documents\POO\GitHubPOO\MIP\client20.cpp\libreria> g++ *.cpp -o main -lws2_32
 esta libreria funciona en windows porque tiene algunas modificaciones, para linux ver la del aula abierta
 
