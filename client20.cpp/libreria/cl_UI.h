@@ -8,13 +8,13 @@ private:
     Panel_cliente* cli;
 public:
     cl_UI();
-    int inicio();
+    void inicio(string puerto, string IP);
     void mostrarDatosCliente();
     void cambiarDatosCliente();
     void ListCom();
     void msjError(string metodo);
     void setCliente(Panel_cliente* cliente);
-    int loop(Panel_cliente cli ,XmlRpcClient c);
+    int loop(XmlRpcClient c);
     int decode(string s);
     string helpCommand(string comando);
 };

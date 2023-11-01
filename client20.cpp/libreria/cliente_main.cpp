@@ -1,11 +1,7 @@
 #include <iostream>
-#include <string>
-using namespace std;
 #include "XmlRpc.h"
 using namespace XmlRpc;
-#include "panel_cliente.h"
 #include "cl_UI.h"
-#include <vector>
 
 
 
@@ -26,17 +22,14 @@ int main(int argc, char* argv[]){
             //XmlRpc::setVerbosity(5);
             // Una mirada a los métodos soportados por la API
             XmlRpcClient c(argv[1], port); //se crea un cliente XMLRPC para conectarse al servidor indicado en la linea de comandos
-            int datos;
-            datos = ui.inicio();
-            Panel_cliente cli = Panel_cliente(datos, argv[2], argv[1]);
-            ui.setCliente(&cli);
+            ui.inicio( argv[2], argv[1]);
             ui.mostrarDatosCliente();
-            ui.loop(cli, c);
+            ui.loop(c);
             return 0;
    
         } catch(const std::exception& e) {
             error = true;
-            std::cerr << "Se ha producido una excepción: " << e.what() << '\n';
+            ui.msjError("main");
         }
     } while (error);
     return 0;
