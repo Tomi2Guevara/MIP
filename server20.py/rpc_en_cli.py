@@ -20,6 +20,7 @@ class ConsolaCLI(Cmd):
     elements = ['1', 2, 'TRES', 'Y EL RESTO']
     listaComandos = ["conectar","desconectar","motores on/off","modo auto/manual","homing","getPos","movLineal x y z vel","list","suma","exit","rpc true/false"]
     ErrorValidacion="ERROR: El robot esta siendo usado por otro cliente, debe esperar..."
+    ErrorControl="ERROR: El servidor ha bloqueado el control del robot, comuniquese para mas informacion..."
 
     def __init__(self):
         Cmd.__init__(self)
@@ -30,6 +31,7 @@ class ConsolaCLI(Cmd):
         self.log = dataLogger("./log/log.txt")
         self.idAct="0000"
         self.idAdmin="0000"
+        
 
     #debemos identificar cada usuario que se conecta al servidor
     #Cuando se conecta un usuario al servidor se le asigna un id
@@ -273,7 +275,9 @@ class ConsolaCLI(Cmd):
                     self.learnFile = fileName
                     respuesta = self.controlador.aprenderTrayectoria(True, str(self.learnFile))   
                 elif modo == "off":
-                    respuesta = self.controlador.aprenderTrayectoria(False, str(self.learnFile))                
+                    respuesta = self.controlador.aprenderTrayectoria(False, str(self.learnFile))    
+            elif self.idAct=="admin":
+                respuesta = self.ErrorControl         
             else:
                 respuesta = self.ErrorValidacion
             self.log.add(Orden("APRENDIZAJE-ID"+str(ID),time.strftime("%H:%M:%S"),respuesta,"Modo: "+modo+"\nNombre del archivo: "+str(fileName)))
@@ -361,6 +365,20 @@ class ConsolaCLI(Cmd):
             respuesta="INFO: Control liberado"
             self.log.add(Orden("DESCONEXION CLIENTE-ID admin",time.strftime("%H:%M:%S"),respuesta))
             print(respuesta)
+    
+    def do_freeControl(self, args):
+        """Libera el control del robot para otro cliente."""
+        self.idAct="0000"
+        respuesta="INFO: Control liberado"
+        self.log.add(Orden("DESCONEXION CLIENTE-ID admin",time.strftime("%H:%M:%S"),respuesta))
+        print(respuesta)
+
+    def do_block(self, args):
+        """Bloquea el robot para otros clientes."""
+        self.idAct="admin"
+        respuesta="INFO: Control bloqueado"
+        self.log.add(Orden("BLOQUEO ROBOT-ID admin",time.strftime("%H:%M:%S"),respuesta))
+        print(respuesta)
             
 
     
