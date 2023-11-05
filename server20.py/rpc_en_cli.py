@@ -26,11 +26,9 @@ class ConsolaCLI(Cmd):
         Cmd.__init__(self)
         self.rpc_server = None
         self.controlador = Controlador()
-        self.ordenes = []
         self.learnFile = None
         self.log = dataLogger("./log/log.txt")
         self.idAct="0000"
-        self.idAdmin="0000"
         
     
     def postcmd(self, stop, line):
