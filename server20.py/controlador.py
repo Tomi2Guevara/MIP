@@ -1,5 +1,6 @@
 from serial_port import SerialPort
 import time
+from time import sleep
 import sys
 from excepciones import ErrorConexion, ModoInvalido, ErrorMotores, LimitVelLin, ErrorWorkSpace
 
@@ -313,13 +314,18 @@ class Controlador:
                 archivo.close()
                 #separamos la trayectoria
                 trayectoria = self.separarTrayectoria(trayectoria)
-                #print(trayectoria)
+                print(trayectoria)
                 #ejecutamos la trayectoria
                 respuesta=""
                 for comando in trayectoria:
-                    self.serial.write(comando)
+                    self.serial.write(str(comando))
                     try:
-                        respuesta+= self.serial.read()
+                        if comando=="M3":
+                            respuesta+="INFO: GRIPPER ON\n"
+                        elif comando=="M5":
+                            respuesta+="INFO: GRIPPER OFF\n"
+                        else:
+                            respuesta+= self.serial.read()
                     except:
                         print("caracter raro")          
                 respuesta += "INFO: trayectoria ejecutada con exito"

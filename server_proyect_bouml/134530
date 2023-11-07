@@ -1,7 +1,7 @@
 format 224
 "cliente" // cliente
-  revision 1
-  modified_by 2 "tguev"
+  revision 2
+  modified_by 2 "enzot"
   // class settings
   
   classdiagramsettings member_max_width 0 end
@@ -51,7 +51,7 @@ format 224
     activitydiagramsettings
      end
     classdiagram 134530 "diagrama"
-      classdiagramsettings member_max_width 0 end
+      classdiagramsettings draw_all_relations no member_max_width 0 end
       size A4
     end
 
@@ -85,6 +85,23 @@ ${docstring}${body}
 	    python "${type}"
 	    classrelation_ref 158594 // <dependency>
 	  b parent class_ref 156290 // XMLRpcClient
+      end
+
+      classrelation 171778 // <generalisation>
+	relation 170498 ---|>
+	  a public
+	    python "${type}"
+	    classrelation_ref 171778 // <generalisation>
+	  b parent class_ref 156034 // Cl_UI
+      end
+
+      classrelation 171906 // <unidirectional association>
+	relation 170626 --->
+	  a role_name "" private
+	    python "${comment}${self}${name} = ${value}
+"
+	    classrelation_ref 171906 // <unidirectional association>
+	  b parent class_ref 156034 // Cl_UI
       end
     end
 
@@ -370,7 +387,7 @@ ${docstring}${members}
 	    classrelation_ref 158466 // <aggregation>
       end
 
-      attribute 151170 "cliente"
+      attribute 151170 "panel_cliente"
 	private explicit_type ""
 	cpp_decl ""
 	java_decl ""
