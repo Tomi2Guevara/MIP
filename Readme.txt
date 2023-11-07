@@ -1,11 +1,11 @@
 INSTRUCCIONES SERVER
-se lanza desde main_test.py
+se lanza desde mainServer.py
 es necesario ejecutar "rcp true" para conectar un cliente
 
 INSTRUCCIONES CLIENTE
-Archivo que importa es el hola_client.cpp dentro de carpeta /libreria
-Para compilar PS C:\Users\enzot\Documents\POO\GitHubPOO\MIP\client20.cpp\libreria> g++ *.cpp -o main -lws2_32
+En la carpeta scripts estan todos los archivos: cliente_main y todas las clases que utiliza junto con la libreria XMLRPC++
 esta libreria funciona en windows porque tiene algunas modificaciones, para linux ver la del aula abierta
+Se deben compilar todos los archivos cpp
 
 INSTRUCCIONES INTERFAZ
 Para lanzar la versión del cliente que acepta comandos a través de la interfaz gráfica, se debe repetir lo indicado en "INSTRUCCIONES CLIENTE", pero entrando a la carpeta /lib en vez que /libreria. 
