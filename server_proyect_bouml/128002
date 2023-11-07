@@ -1,6 +1,6 @@
 format 224
 "Server" // Server
-  revision 9
+  revision 11
   modified_by 2 "enzot"
   // class settings
   
@@ -1228,7 +1228,7 @@ ${docstring}${body}
 	
       end
 
-      operation 138370 "run_server"
+      operation 138370 "server_forever"
 	public explicit_return_type ""
 	nparams 0
 	

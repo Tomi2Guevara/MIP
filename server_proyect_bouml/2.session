@@ -1,13 +1,13 @@
-window_sizes 1920 991 450 1464 809 128
+window_sizes 1920 991 423 1491 799 138
 
 diagrams
-  active  classdiagram_ref 128002 // diag_1
-    1385 1418 78 A4 0 0
-  classdiagram_ref 134530 // diagrama
-    1171 647 100 A4 0 0
+  classdiagram_ref 128002 // diag_1
+    1125 775 78 A4 36 0
+  active  classdiagram_ref 134530 // diagrama
+    1171 746 100 A4 0 0
 end
 show_stereotypes
-selected operation_ref 163202 // getLog
+selected classdiagram_ref 134530 // diagrama
 open
   attribute_ref 128514 // estadoConexion
   attribute_ref 128770 // estadoMotores

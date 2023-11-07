@@ -1,10 +1,10 @@
 ----------------INICIO SERVIDOR RPC-----------------
-Hora de ejecucion: 12:49:40
+Hora de ejecucion: 23:58:16
 Servidor RPC iniciado en el puerto: ('127.0.0.1', 8891)
 ---------------------------------------------------------------
 
-----------------CONECTAR ROBOT-ID 1234-----------------
-Hora de ejecucion: 12:55:45
+----------------CONECTAR ROBOT-ID 2452-----------------
+Hora de ejecucion: 23:58:44
 Especificaciones: Puerto: COM6
 Baudrate: 115200
 INFO: ROBOT ONLINE
@@ -12,8 +12,8 @@ INFO: conexion exitosa
 INFO: Robot conectado en el puerto COM6
 ---------------------------------------------------------------
 
-----------------CONECTAR ROBOT-ID 1234-----------------
-Hora de ejecucion: 12:55:45
+----------------CONECTAR ROBOT-ID 2452-----------------
+Hora de ejecucion: 23:58:44
 Especificaciones: Puerto: COM6
 Baudrate: 115200
 INFO: ROBOT ONLINE
@@ -21,152 +21,186 @@ INFO: conexion exitosa
 INFO: Robot conectado en el puerto COM6
 ---------------------------------------------------------------
 
-----------------MOTORES-ID 1234-----------------
-Hora de ejecucion: 12:55:50
+----------------HOMING-ID 2452-----------------
+Hora de ejecucion: 23:58:49
+ERROR: los motores estan desactivados
+---------------------------------------------------------------
+
+----------------MOTORES-ID 2452-----------------
+Hora de ejecucion: 23:58:54
 Especificaciones: Modo: on
 INFO: MOTORS ENABLED
 ---------------------------------------------------------------
 
-----------------MOVIMIENTO LINEAL-ID1234-----------------
-Hora de ejecucion: 12:56:12
-Especificaciones: Posicion requerida: [170.0, 170.0, 120.0]
-INFO: LINEAR MOVE: [X:170.00 Y:170.00 Z:120.00 E:0.00] t=0.77s
----------------------------------------------------------------
-
-----------------MOVIMIENTO LINEAL-ID1234-----------------
-Hora de ejecucion: 12:56:44
-Especificaciones: Velocidad: 56.0 mm/s
-Posicion requerida: [100.0, 170.0, 120.0]
-ERROR: la velocidad lineal esta fuera de rango, v<50 mm/s
----------------------------------------------------------------
-
-----------------MOVIMIENTO LINEAL-ID1234-----------------
-Hora de ejecucion: 12:56:56
-Especificaciones: Posicion requerida: [100.0, 170.0, 120.0]
-INFO: LINEAR MOVE: [X:100.00 Y:170.00 Z:120.00 E:0.00] t=1.20s
----------------------------------------------------------------
-
-----------------MOTORES-ID 1234-----------------
-Hora de ejecucion: 12:57:16
-Especificaciones: Modo: off
-INFO: MOTORS DISABLED
----------------------------------------------------------------
-
-----------------MOTORES-ID 1234-----------------
-Hora de ejecucion: 12:57:22
-Especificaciones: Modo: on
-INFO: MOTORS ENABLED
----------------------------------------------------------------
-
-----------------CAMBIAR MODO-ID 1234-----------------
-Hora de ejecucion: 12:57:26
-Especificaciones: Modo: auto
-INFO: modo automatico activado
----------------------------------------------------------------
-
-----------------CAMBIAR MODO-ID 1234-----------------
-Hora de ejecucion: 12:57:30
-Especificaciones: Modo: manual
-INFO: modo manual activado
----------------------------------------------------------------
-
-----------------GRIPPER-ID1234-----------------
-Hora de ejecucion: 12:57:39
-Especificaciones: Modo: on
-INFO: GRIPPER ON
----------------------------------------------------------------
-
-----------------GRIPPER-ID1234-----------------
-Hora de ejecucion: 12:57:42
-Especificaciones: Modo: off
-INFO: GRIPPER OFF
----------------------------------------------------------------
-
-----------------BLOQUEO ROBOT-ID admin-----------------
-Hora de ejecucion: 12:58:04
-INFO: Control bloqueado
----------------------------------------------------------------
-
-----------------HOMING-ID 1234-----------------
-Hora de ejecucion: 12:58:09
-ERROR: El servidor ha bloqueado el control del robot, comuniquese para mas informacion...
----------------------------------------------------------------
-
-----------------DESCONEXION CLIENTE-ID admin-----------------
-Hora de ejecucion: 12:58:16
-INFO: Control liberado
----------------------------------------------------------------
-
-----------------HOMING-ID 1234-----------------
-Hora de ejecucion: 12:58:22
+----------------HOMING-ID 2452-----------------
+Hora de ejecucion: 23:59:00
 INFO: HOMING
 INFO: HOMING COMPLETE t=7.50s
 ---------------------------------------------------------------
 
-----------------APRENDIZAJE-ID1234-----------------
-Hora de ejecucion: 12:58:42
+----------------APRENDIZAJE-ID2452-----------------
+Hora de ejecucion: 23:59:34
 Especificaciones: Modo: on
-Nombre del archivo: tray001
+Nombre del archivo: tray_001
 INFO: se esta grabando la trayectoria
 ---------------------------------------------------------------
 
-----------------APRENDIZAJE-ID1234-----------------
-Hora de ejecucion: 12:59:00
+----------------MOVIMIENTO LINEAL-ID2452-----------------
+Hora de ejecucion: 00:00:09
+Especificaciones: Velocidad: 25.0 mm/s
+Posicion requerida: [50.0, 174.300003, 120.599998]
+INFO: LINEAR MOVE: [X:50.00 Y:174.30 Z:120.60 E:0.00] t=0.50s
+---------------------------------------------------------------
+
+----------------GRIPPER-ID2452-----------------
+Hora de ejecucion: 00:02:30
+Especificaciones: Modo: on
+INFO: GRIPPER ON
+---------------------------------------------------------------
+
+----------------GET POSITION-ID 2452-----------------
+Hora de ejecucion: 00:02:42
+INFO: ABSOLUTE MODE
+INFO: CURRENT POSITION: [X:50.00 Y:174.30 Z:120.60 E:0.00]
+---------------------------------------------------------------
+
+----------------APRENDIZAJE-ID2452-----------------
+Hora de ejecucion: 00:03:09
 Especificaciones: Modo: off
 Nombre del archivo: 
 INFO: trayectoria guardada con exito
 ---------------------------------------------------------------
 
-----------------CAMBIAR MODO-ID 1234-----------------
-Hora de ejecucion: 12:59:14
+----------------EJECUTAR TRAYECTORIA-ID2452-----------------
+Hora de ejecucion: 00:03:42
+Especificaciones: Nombre del archivo: ./trayectorias/tray_02.txt
+ERROR: pasar a modo automatico para ejecutar trayectorias
+---------------------------------------------------------------
+
+----------------CAMBIAR MODO-ID 2452-----------------
+Hora de ejecucion: 00:03:52
 Especificaciones: Modo: auto
 INFO: modo automatico activado
 ---------------------------------------------------------------
 
-----------------EJECUTAR TRAYECTORIA-ID1234-----------------
-Hora de ejecucion: 12:59:35
+----------------EJECUTAR TRAYECTORIA-ID2452-----------------
+Hora de ejecucion: 00:04:04
 Especificaciones: Nombre del archivo: ./trayectorias/tray_02.txt
 INFO: HOMING
 INFO: HOMING COMPLETE t=4.50s
 INFO: LINEAR!MOVE: [X:120.00 Y:170.00 Z:120.00 E:0.00] t=0.17s
+INFO: GRIPPER ON
 INFO: trayectoria ejecutada con exito
 ---------------------------------------------------------------
 
-----------------MOVIMIENTO LINEAL-ID1234-----------------
-Hora de ejecucion: 12:59:53
-Especificaciones: Velocidad: 25.0 mm/s
-Posicion requerida: [120.0, 134.0, 120.0]
-ERROR: el robot esta en modo automatico
+----------------DESCONECTAR ROBOT-ID 2452-----------------
+Hora de ejecucion: 00:04:35
+INFO: robot desconectado
 ---------------------------------------------------------------
 
-----------------CAMBIAR MODO-ID 1234-----------------
-Hora de ejecucion: 12:59:58
-Especificaciones: Modo: manual
-INFO: modo manual activado
+----------------DESCONECTAR ROBOT-ID 2452-----------------
+Hora de ejecucion: 00:04:38
+ERROR: el robot ya esta desconectado
 ---------------------------------------------------------------
 
-----------------MOVIMIENTO LINEAL-ID1234-----------------
-Hora de ejecucion: 13:00:17
-Especificaciones: Velocidad: 36.0 mm/s
-Posicion requerida: [125.0, 150.0, 100.0]
-ERROR: punto fuera del espacio de trabajo
+----------------DESCONEXION CLIENTE-ID2452-----------------
+Hora de ejecucion: 00:04:38
+INFO: Control liberado
 ---------------------------------------------------------------
 
-----------------MOVIMIENTO LINEAL-ID1234-----------------
-Hora de ejecucion: 13:00:37
-Especificaciones: Velocidad: 25.0 mm/s
-Posicion requerida: [120.0, 170.0, 120.0]
-INFO: LINEAR MOVE: [X:125.00 Y:150.00 Z:100.00 E:0.00] t=1.25s
-INFO: LINEAR MOVE: [X:120.00 Y:170.00 Z:120.00 E:0.00] t=0.87s
+----------------BLOQUEO ROBOT-ID admin-----------------
+Hora de ejecucion: 00:06:27
+INFO: Control bloqueado
+---------------------------------------------------------------
+
+----------------DESCONEXION CLIENTE-ID admin-----------------
+Hora de ejecucion: 00:06:46
+INFO: Control liberado
+---------------------------------------------------------------
+
+----------------CONECTAR ROBOT-ID 2452-----------------
+Hora de ejecucion: 00:09:17
+Especificaciones: Puerto: COM6
+Baudrate: 115200
+INFO: ROBOT ONLINE
+INFO: conexion exitosa
+INFO: Robot conectado en el puerto COM6
+---------------------------------------------------------------
+
+----------------CONECTAR ROBOT-ID 2452-----------------
+Hora de ejecucion: 00:09:17
+Especificaciones: Puerto: COM6
+Baudrate: 115200
+INFO: ROBOT ONLINE
+INFO: conexion exitosa
+INFO: Robot conectado en el puerto COM6
+---------------------------------------------------------------
+
+----------------CONECTAR ROBOT-ID 1234-----------------
+Hora de ejecucion: 00:09:29
+Especificaciones: Puerto: COM6
+Baudrate: 115200
+ERROR: El robot esta siendo usado por otro cliente, debe esperar...
+---------------------------------------------------------------
+
+----------------MOTORES-ID 1234-----------------
+Hora de ejecucion: 00:09:33
+Especificaciones: Modo: on
+ERROR: El robot esta siendo usado por otro cliente, debe esperar...
+---------------------------------------------------------------
+
+----------------DESCONECTAR ROBOT-ID 2452-----------------
+Hora de ejecucion: 00:09:51
+INFO: robot desconectado
+---------------------------------------------------------------
+
+----------------CONECTAR ROBOT-ID 1234-----------------
+Hora de ejecucion: 00:10:00
+Especificaciones: Puerto: COM6
+Baudrate: 115200
+INFO: ROBOT ONLINE
+INFO: conexion exitosa
+INFO: Robot conectado en el puerto COM6
+---------------------------------------------------------------
+
+----------------CONECTAR ROBOT-ID 1234-----------------
+Hora de ejecucion: 00:10:00
+Especificaciones: Puerto: COM6
+Baudrate: 115200
+INFO: ROBOT ONLINE
+INFO: conexion exitosa
+INFO: Robot conectado en el puerto COM6
+---------------------------------------------------------------
+
+----------------BLOQUEO ROBOT-ID admin-----------------
+Hora de ejecucion: 00:10:18
+INFO: Control bloqueado
+---------------------------------------------------------------
+
+----------------MOTORES-ID 1234-----------------
+Hora de ejecucion: 00:10:25
+Especificaciones: Modo: on
+ERROR: El servidor ha bloqueado el control del robot, comuniquese para mas informacion...
+---------------------------------------------------------------
+
+----------------DESCONEXION CLIENTE-ID admin-----------------
+Hora de ejecucion: 00:10:35
+INFO: Control liberado
+---------------------------------------------------------------
+
+----------------MOTORES-ID 1234-----------------
+Hora de ejecucion: 00:10:40
+Especificaciones: Modo: on
+INFO: MOTORS ENABLED
 ---------------------------------------------------------------
 
 ----------------DESCONECTAR ROBOT-ID 1234-----------------
-Hora de ejecucion: 13:00:44
+Hora de ejecucion: 00:26:53
 INFO: robot desconectado
 ---------------------------------------------------------------
 
 ----------------DESCONEXION CLIENTE-ID1234-----------------
-Hora de ejecucion: 13:00:44
+Hora de ejecucion: 00:26:53
 INFO: Control liberado
 ---------------------------------------------------------------
 

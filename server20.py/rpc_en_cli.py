@@ -311,7 +311,7 @@ class ConsolaCLI(Cmd):
         
         if ID is not None:
             if ID==self.idAct or self.idAct=="0000":
-                print(tray)
+                #print(tray)
                 tray="./trayectorias/"+tray
                 respuesta = self.controlador.ejecutarTrayectoria(str(tray))
             elif self.idAct=="admin":
@@ -327,21 +327,23 @@ class ConsolaCLI(Cmd):
                 self.log.add(Orden("EJECUTAR TRAYECTORIA-ID admin",time.strftime("%H:%M:%S"),respuesta,"Nombre del archivo: "+str(tray)))
                 print(respuesta)
             else:
-                print("Tryectorias disponibles:")
+                print("Trayectorias disponibles:")
                 for file in os.listdir("trayectorias"):
-                    print(file)
+                    #print(file)
+                    #mostramos los archivos sin la extension .txt
+                    print(file[:-4])
                 #pedimos el nombre del archivo y controlamos que exista
                 print("Ingrese el nombre del archivo que desea ejecutar")
                 file = input()
-                file="./trayectorias/"+file
+                file="./trayectorias/"+file+".txt"
                 if os.path.isfile(file):
                     respuesta = self.controlador.ejecutarTrayectoria(str(file))
                     self.log.add(Orden("EJECUTAR TRAYECTORIA-ID admin",time.strftime("%H:%M:%S"),respuesta,"Nombre del archivo: "+str(file)))
                     print(respuesta)
                 else:
                     respuesta="ERROR: el archivo no existe"
-                self.log.add(Orden("EJECUTAR TRAYECTORIA-ID admin",time.strftime("%H:%M:%S"),respuesta,"Nombre del archivo: "+str(file)))
-                print(respuesta)  
+                    self.log.add(Orden("EJECUTAR TRAYECTORIA-ID admin",time.strftime("%H:%M:%S"),respuesta,"Nombre del archivo: "+str(file)))
+                    print(respuesta)  
 
     def do_reporte(self, arg1, arg2=None):
         """Genera un reporte del estado actual del robot y las ordenes realizadas por el cliente."""
