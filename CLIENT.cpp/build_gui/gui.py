@@ -3,9 +3,9 @@ from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
 import time
 import sys
 
-
 OUTPUT_PATH = Path(__file__).parent
-ASSETS_PATH = OUTPUT_PATH / Path(r"/Users/martinarobyculasso/Desktop/build/assets/frame0")
+# debo cambiar el path según dónde se encuentren los assets
+ASSETS_PATH = OUTPUT_PATH / Path(r"/Users/martinarobyculasso/Desktop/build_gui/assets/frame0")
 
 
 def relative_to_assets(path: str) -> Path:
@@ -14,13 +14,31 @@ def relative_to_assets(path: str) -> Path:
 
 # Función para mandar mensajes al programa C++
 def send_message_to_cpp(message):
-    pipe_path = "/Users/martinarobyculasso/Desktop/pipe/my_pipe"
+    pipe_path = "/Users/martinarobyculasso/Desktop/pipe/my_pipe"  # debo cambiar el path según dónde se va a abrir el pipe
     try:
         with open(pipe_path, "w") as pipe:
             pipe.write(message + "\n")
         print(f"Sent message to C++ program: {message}")
     except Exception as e:
         print(f"Error sending message to C++ program: {e}")
+
+
+# Define a global variable to store the value of entry_2
+entry_2_value = ""
+
+
+# Function to set custom read-only text in entry_3
+def set_custom_read_only_text(text):
+    entry_3.config(state="normal")  # Set state to normal to allow modification
+    entry_3.delete(1.0, "end")  # Clear existing content
+    entry_3.insert("end", text)  # Insert new text
+    entry_3.config(state="disabled")  # Set state back to disabled
+
+
+# Function to update entry_2_value whenever entry_2 content changes
+def update_entry_2_value(event):
+    global entry_2_value
+    entry_2_value = entry_2.get()
 
 
 # Define your button click functions
@@ -83,17 +101,16 @@ def button_11_clicked():
 
 def button_10_clicked():
     send_message_to_cpp("ejecutarTray")
+    time.sleep(1)
+    send_message_to_cpp(entry_2_value)
 
 
 def button_12_clicked():
+    global entry_2_value
     # Get the content of entry_2
     entry_2_content = entry_2.get()
-
-    # Append "fileName: " to the entry content
-    message = "fileName: " + entry_2_content
-
-    # Send the modified content to C++
-    send_message_to_cpp(message)
+    entry_2_value = entry_2_content
+    print(f"entry_2_value has been updated to: {entry_2_value}")
 
 
 def button_13_clicked():
@@ -110,30 +127,12 @@ def button_15_clicked():
 
 def button_16_clicked():
     send_message_to_cpp("aprendizaje on")
+    time.sleep(1)
+    send_message_to_cpp(entry_2_value)
 
 
 def button_17_clicked():
     send_message_to_cpp("aprendizaje off")
-
-
-# # En realidad esto va a ser que muestre los msjes que saldrian por el cmd
-# ser = serial.Serial('/dev/cu.usbmodem1101', baudrate=115200)
-#
-#
-# def read_serial():
-#     while True:
-#         try:
-#             response = ser.readline().decode().strip()  # Read a line from the serial port
-#             entry_3.delete(1.0, tk.END)  # Clear the current content of entry_3
-#             entry_3.insert(tk.END, response)  # Insert the new response
-#         except Exception as e:
-#             print(f"Error reading serial port: {e}")
-#             break
-#
-#
-# # Start a thread to continuously read from the serial port
-# serial_thread = threading.Thread(target=read_serial)
-# serial_thread.start()
 
 
 def validate_entry1_input(P):
@@ -694,6 +693,9 @@ entry_2.place(
     height=33.0
 )
 
+# Bind the update_entry_2_value function to the entry_2 widget
+entry_2.bind("<KeyRelease>", update_entry_2_value)
+
 entry_image_3 = PhotoImage(
     file=relative_to_assets("entry_3.png"))
 entry_bg_3 = canvas.create_image(
@@ -701,11 +703,13 @@ entry_bg_3 = canvas.create_image(
     451.5,
     image=entry_image_3
 )
+
 entry_3 = Text(
     bd=0,
     bg="#D9D9D9",
     fg="#000716",
-    highlightthickness=0
+    highlightthickness=0,
+    state="disabled"  # Set the state to disabled to make it read-only
 )
 entry_3.place(
     x=740.0,
@@ -713,6 +717,22 @@ entry_3.place(
     width=324.0,
     height=187.0
 )
+
+custom_text = """Estas son las trayectorias precargadas para elmodo automático. Por favor indique cuál quiereejecutar y presione "Enviar" antes de 
+presionar el botón "Ejecutar Trayectoria".
+
+.txt
+tray_001.txt
+tray_02.txt
+Tray_01.txt
+
+De igual forma, si quiere encender el modo 
+aprendizaje, indique primero el nombre del 
+archivo a generar y presione "Enviar".
+"""
+
+# Usage example to display custom text
+set_custom_read_only_text(custom_text)
 
 entry_image_4 = PhotoImage(
     file=relative_to_assets("entry_4.png"))
